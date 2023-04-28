@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RESTProtocol {
-    func get(url: String) -> Result<Any, Error>
+    func get(url: String) async -> Result<Data, Error>
 }
