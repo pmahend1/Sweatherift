@@ -8,6 +8,6 @@
 import Foundation
 
 struct CoOrdinates: Decodable {
-    var lat: Decimal
-    var lon: Decimal
+   var lat: Decimal
+   var lon: Decimal
 }

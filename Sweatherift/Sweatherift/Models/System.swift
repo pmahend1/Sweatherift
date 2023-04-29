@@ -8,7 +8,7 @@
 import Foundation
 
 struct System: Decodable, Identifiable {
-    let type, id: Int
-    let country: String
-    let sunrise, sunset: Int
+   let type, id: Int
+   let country: String
+   let sunrise, sunset: Int
 }
