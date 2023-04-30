@@ -11,12 +11,7 @@ import SwiftUI
 struct SweatheriftApp: App {
    var body: some Scene {
       WindowGroup {
-         let locationOptional: Location? = nil // UserDefaults.standard.object(forKey: "lastSearchedLocation") as? Location
-         if let location = locationOptional {
-            WeatherView(for: location)
-         } else {
-            HomeView()
-         }
+         HomeView()
       }
    }
 }

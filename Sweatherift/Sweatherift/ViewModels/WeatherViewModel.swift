@@ -14,6 +14,8 @@ final class WeatherViewModel: ObservableObject {
    @Published var weatherReport: WeatherReport? = nil
    @Published var isBusy = false
 
+   @Injected(\.RESTService) var RESTService
+
    var title: String {
       var stateText = ""
       if let state = location.state {
@@ -38,18 +40,15 @@ final class WeatherViewModel: ObservableObject {
       let url = "\(Constants.weatherUrl)lat=\(location.lat)&lon=\(location.lon)&APPID=\(Constants.weatherAPIKey)"
 
       isBusy = true
-      let result = await RESTService().get(url: url)
+      let result = await RESTService.get(url: url, returnType: WeatherReport.self)
       switch result {
-         case let .success(data):
-            let jsonDecoder = JSONDecoder()
-            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-
+         case let .success(weatherData):
+            weatherReport = weatherData
             do {
-               let weatherData = try jsonDecoder.decode(WeatherReport.self, from: data)
-               weatherReport = weatherData
-               //UserDefaults.standard.set(location, forKey: "lastSearchedLocation")
+               let data = try JSONEncoder().encode(location)
+               UserDefaults.standard.set(data, forKey: "lastSearchedLocation")
             } catch {
-               print(String(describing: error))
+               print(error)
             }
          case let .failure(error):
             print(error)

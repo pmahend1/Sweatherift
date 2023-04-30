@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
    @StateObject private var viewModel = HomeViewModel()
    @State private var searchText = ""
+   @State private var lastLocation: Location?
 
    // MARK: - Body
 
@@ -32,6 +33,16 @@ struct HomeView: View {
             await viewModel.getLocations(searchText: newValue)
          }
       }
+      .onAppear {
+         loadData()
+      }
+      .background {
+         NavigationLink(value: lastLocation) {
+            if let location = lastLocation {
+               WeatherView(for: location)
+            }
+         }.opacity(0)
+      }
    }
 
    var searchResults: [Location] {
@@ -39,6 +50,18 @@ struct HomeView: View {
          return []
       } else {
          return viewModel.locationResults
+      }
+   }
+
+   func loadData() {
+      let locationDataOptional = UserDefaults.standard.data(forKey: "lastSearchedLocation")
+      if let locationData = locationDataOptional {
+         do {
+            let location = try JSONDecoder().decode(Location.self, from: locationData)
+            lastLocation = location
+         } catch {
+            print(error)
+         }
       }
    }
 }

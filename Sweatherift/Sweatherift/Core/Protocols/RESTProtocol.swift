@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RESTProtocol {
-    func get(url: String) async -> Result<Data, Error>
+   func get<T: Decodable>(url: String, returnType: T.Type) async -> Result<T, Error>
 }

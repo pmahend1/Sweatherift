@@ -15,22 +15,16 @@ final class HomeViewModel: ObservableObject {
 
    @Published var locationResults: [Location] = []
 
+   @Injected(\.RESTService) var RESTService
+
    // MARK: - Methods
 
    func getLocations(searchText: String) async {
       let url = "\(Constants.locationUrl)\(searchText)&limit=5&APPID=\(Constants.weatherAPIKey)"
-      let result = await RESTService().get(url: url)
+      let result = await RESTService.get(url: url, returnType: [Location].self)
       switch result {
-         case let .success(success):
-            let jsonDecoder = JSONDecoder()
-            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-
-            do {
-               let data = try jsonDecoder.decode([Location].self, from: success)
-               locationResults = data
-            } catch {
-               print(String(describing: error))
-            }
+         case let .success(data):
+            locationResults = data
          case let .failure(failure):
             print(failure)
       }

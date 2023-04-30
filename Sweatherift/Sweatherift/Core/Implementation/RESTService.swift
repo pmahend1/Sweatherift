@@ -8,17 +8,21 @@
 import Foundation
 
 class RESTService: RESTProtocol {
-   func get(url: String) async -> Result<Data, Error> {
+   func get<T: Decodable>(url: String, returnType: T.Type) async -> Result<T, Error> {
       let urlOptional = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
       guard let urlString = urlOptional, let url = URL(string: urlString) else {
-         return Result.failure(APIError(message: "Invalid URL"))
+         return .failure(APIError(message: "Invalid URL"))
       }
 
       do {
+         let jsonDecoder = JSONDecoder()
+         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+
          let (data, _) = try await URLSession.shared.data(from: url)
-         return Result.success(data)
+         let decodedData = try jsonDecoder.decode(returnType.self, from: data)
+         return .success(decodedData)
       } catch {
-         return Result.failure(error)
+         return .failure(error)
       }
    }
 }
