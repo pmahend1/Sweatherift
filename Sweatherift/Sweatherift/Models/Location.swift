@@ -8,13 +8,13 @@
 import Foundation
 
 struct Location: Decodable, Identifiable {
-   var id = UUID()
+   let id = UUID()
    let name: String
    let localNames: [String: String]?
    let lat: Double
    let lon: Double
    let country: String
-   let state: String
+   let state: String?
 
    enum CodingKeys: CodingKey {
       case name
@@ -23,5 +23,20 @@ struct Location: Decodable, Identifiable {
       case lon
       case country
       case state
+   }
+
+   init(name: String,
+        localNames: [String: String]? = nil,
+        lat: Double,
+        lon: Double,
+        country: String,
+        state: String)
+   {
+      self.name = name
+      self.localNames = localNames
+      self.lat = lat
+      self.lon = lon
+      self.country = country
+      self.state = state
    }
 }

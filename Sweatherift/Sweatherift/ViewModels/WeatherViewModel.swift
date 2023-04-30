@@ -12,11 +12,32 @@ final class WeatherViewModel: ObservableObject {
    // MARK: - Properties
 
    @Published var weatherReport: WeatherReport? = nil
+   @Published var isBusy = false
+
+   var title: String {
+      var stateText = ""
+      if let state = location.state {
+         stateText = ", \(state)"
+      }
+      return "\(location.name)\(stateText), \(location.country)"
+   }
+
+   private var location: Location
+
+   init(for location: Location) {
+      self.location = location
+   }
 
    // MARK: - Methods
 
-   func getWeather(for location: Location) async {
+   func getWeather() async {
+      defer {
+         isBusy = false
+      }
+
       let url = "\(Constants.weatherUrl)lat=\(location.lat)&lon=\(location.lon)&APPID=\(Constants.weatherAPIKey)"
+
+      isBusy = true
       let result = await RESTService().get(url: url)
       switch result {
          case let .success(data):
@@ -26,6 +47,7 @@ final class WeatherViewModel: ObservableObject {
             do {
                let weatherData = try jsonDecoder.decode(WeatherReport.self, from: data)
                weatherReport = weatherData
+               //UserDefaults.standard.set(location, forKey: "lastSearchedLocation")
             } catch {
                print(String(describing: error))
             }

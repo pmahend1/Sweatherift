@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
    @StateObject private var viewModel = HomeViewModel()
    @State private var searchText = ""
+
    // MARK: - Body
 
    var body: some View {
@@ -17,10 +18,9 @@ struct HomeView: View {
          List {
             ForEach(searchResults, id: \.id) { location in
                NavigationLink {
-                  //Text("\(location.name),\(location.state),\(location.country)")
-                  WeatherView()
+                  WeatherView(for: location)
                } label: {
-                  Text("\(location.name),\(location.state),\(location.country)")
+                  Text("\(location.name)\(location.state == nil ? "" : ",\(location.state ?? "")"), \(location.country)")
                }
             }
          }
@@ -38,7 +38,7 @@ struct HomeView: View {
       if searchText.isEmpty || searchText.count < 3 {
          return []
       } else {
-         return viewModel.locationResults // .map { $0.name }
+         return viewModel.locationResults
       }
    }
 }
