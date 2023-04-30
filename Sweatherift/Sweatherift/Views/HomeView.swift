@@ -5,20 +5,18 @@
 //  Created by Prateek Mahendrakar on 4/27/23.
 //
 
-import CoreLocation
-import CoreLocationUI
+
 import SwiftUI
+import CoreLocationUI
 
 struct HomeView: View {
+   // MARK: - Properties
+
    @StateObject private var viewModel = HomeViewModel()
    @StateObject var locationManager = LocationManager()
-   @State private var searchText = ""
-   @State private var lastLocation: Location?
-   @State private var isLastDisplayed = false
-   @State private var isLocationShared = false
 
    var searchResults: [Location] {
-      if searchText.isEmpty || searchText.count < 3 {
+      if viewModel.searchText.isEmpty || viewModel.searchText.count < 3 {
          return []
       } else {
          return viewModel.locationResults
@@ -32,7 +30,7 @@ struct HomeView: View {
          List {
             LocationButton(.shareMyCurrentLocation) {
                locationManager.requestLocation()
-               isLocationShared = true
+               viewModel.isLocationShared = true
             }
             .frame(height: 44)
             .padding()
@@ -50,12 +48,12 @@ struct HomeView: View {
          .navigationDestination(for: Location.self) { location in
             WeatherView(for: location)
          }
-         .navigationDestination(isPresented: $isLastDisplayed) {
-            if let location = lastLocation {
+         .navigationDestination(isPresented: $viewModel.isLastDisplayed) {
+            if let location = viewModel.lastLocation {
                WeatherView(for: location)
             }
          }
-         .navigationDestination(isPresented: $isLocationShared) {
+         .navigationDestination(isPresented: $viewModel.isLocationShared) {
             if let location = locationManager.location {
                let loc = Location(name: "",
                                   lat: location.latitude,
@@ -67,29 +65,15 @@ struct HomeView: View {
          }
          .navigationTitle("Sweatherift")
       }
-      .searchable(text: $searchText)
-      .onChange(of: searchText) { newValue in
+      .searchable(text: $viewModel.searchText)
+      .onChange(of: viewModel.searchText) { newValue in
          Task {
             await viewModel.getLocations(searchText: newValue)
          }
       }
       .onAppear {
-         loadData()
-         isLocationShared = locationManager.hasLocation
-      }
-   }
-
-   // TODO: - move to viewModel
-   func loadData() {
-      let locationDataOptional = UserDefaults.standard.data(forKey: "lastSearchedLocation")
-      if let locationData = locationDataOptional {
-         do {
-            let location = try JSONDecoder().decode(Location.self, from: locationData)
-            lastLocation = location
-            isLastDisplayed = true
-         } catch {
-            print(error)
-         }
+         viewModel.loadData()
+         viewModel.isLocationShared = locationManager.hasLocation
       }
    }
 }
@@ -100,28 +84,3 @@ struct HomeView_Previews: PreviewProvider {
    }
 }
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-   let manager = CLLocationManager()
-
-   @Published var location: CLLocationCoordinate2D?
-   var hasLocation: Bool {
-      return location != nil
-   }
-
-   override init() {
-      super.init()
-      manager.delegate = self
-   }
-
-   func requestLocation() {
-      manager.requestLocation()
-   }
-
-   func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-      location = locations.first?.coordinate
-   }
-
-   func locationManager(_: CLLocationManager, didFailWithError error: Error) {
-      print(error)
-   }
-}

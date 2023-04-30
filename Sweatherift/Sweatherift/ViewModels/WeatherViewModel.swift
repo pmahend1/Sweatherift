@@ -15,6 +15,7 @@ final class WeatherViewModel: ObservableObject {
    @Published var isBusy = false
 
    @Injected(\.RESTService) var RESTService
+   @Injected(\.analytics) var analytics
 
    var title: String {
       var stateText = ""
@@ -36,30 +37,21 @@ final class WeatherViewModel: ObservableObject {
       defer {
          isBusy = false
       }
-
-      let url = "\(Constants.weatherUrl)lat=\(location.lat)&lon=\(location.lon)&APPID=\(Constants.weatherAPIKey)"
-
       isBusy = true
+      let url = "\(Constants.weatherUrl)lat=\(location.lat)&lon=\(location.lon)&APPID=\(Constants.weatherAPIKey)"
       let result = await RESTService.get(url: url, returnType: WeatherReport.self)
+
       switch result {
          case let .success(weatherData):
             weatherReport = weatherData
             do {
                let data = try JSONEncoder().encode(location)
-               UserDefaults.standard.set(data, forKey: "lastSearchedLocation")
+               UserDefaults.standard.set(data, forKey: Constants.lastSearchedLocationKey)
             } catch {
-               print(error)
+               analytics.logError(error: error)
             }
          case let .failure(error):
-            print(error)
+            analytics.logError(error: error)
       }
-   }
-
-   func convertTemperature(temp: Double) -> String {
-      let mf = MeasurementFormatter()
-      mf.locale = .current
-      mf.numberFormatter.maximumFractionDigits = 0
-      let input = Measurement(value: temp, unit: UnitTemperature.kelvin)
-      return mf.string(from: input)
    }
 }

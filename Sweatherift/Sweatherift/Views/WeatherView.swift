@@ -21,31 +21,27 @@ struct WeatherView: View {
                .ignoresSafeArea(.all)
          }
          VStack(alignment: .center, spacing: .zero) {
-            if let weatherReport = viewModel.weatherReport {
+            if let weatherReport = viewModel.weatherReport, weatherReport.weather.count > 0 {
                Text("\(weatherReport.name)")
                   .font(.title)
 
-               if let iconUrl = URL(string: "https://openweathermap.org/img/wn/\(weatherReport.weather[0].icon)@2x.png") {
+               let currentWeather = weatherReport.weather[0]
+               if let iconUrl = URL(string: "https://openweathermap.org/img/wn/\(currentWeather.icon)@2x.png") {
                   AsyncImage(url: iconUrl)
                      .scaledToFit()
                }
                Group {
-                  Text("Temp: \(viewModel.convertTemperature(temp: weatherReport.main.temp))")
-                  Text("Feels Like: \(viewModel.convertTemperature(temp: weatherReport.main.feelsLike))")
-                  Text("Min: \(viewModel.convertTemperature(temp: weatherReport.main.minTemp))")
-                  Text("Max: \(viewModel.convertTemperature(temp: weatherReport.main.maxTemp))")
+                  Text("\(currentWeather.main) - \(currentWeather.description)")
+                  Text("Temp: \(Converter.toLocaleTemperature(weatherReport.main.temp))")
+                  Text("Feels Like: \(Converter.toLocaleTemperature(weatherReport.main.feelsLike))")
+                  Text("Min: \(Converter.toLocaleTemperature(weatherReport.main.minTemp))")
+                  Text("Max: \(Converter.toLocaleTemperature(weatherReport.main.maxTemp))")
                }
 
                Group {
                   Text("Pressure: \(weatherReport.main.pressure)mbar")
                   Text("Humidity: \(weatherReport.main.humidity.formatted(.percent))")
-               }
-
-               Group {
-                  Text("Clouds")
-                     .font(.title3)
-
-                  Text("\(weatherReport.clouds.all.formatted(.percent))")
+                  Text("Clouds: \(weatherReport.clouds.all.formatted(.percent))")
                }
                .padding(.top, 20)
 
@@ -53,10 +49,12 @@ struct WeatherView: View {
                   Text("Wind")
                      .font(.title3)
 
-                  Text("Speed: \(weatherReport.wind.speed)km/h")
+                  Text("Speed: \(weatherReport.wind.speed.formatted())km/h")
                   Text("Degree: \(weatherReport.wind.deg)°")
                }
                .padding(.top, 20)
+            } else {
+               Text("No weather report found. Please try again later!")
             }
          }
       }

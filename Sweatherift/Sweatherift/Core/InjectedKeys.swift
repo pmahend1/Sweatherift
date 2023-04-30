@@ -10,3 +10,7 @@ import Foundation
 struct RESTServiceKey: InjectionKey {
    static var currentValue: RESTProtocol = RESTService()
 }
+
+struct AnalyticsServiceKey: InjectionKey {
+   static var currentValue: AnalyticsProtocol = AnalyticsService()
+}

@@ -12,10 +12,14 @@ final class HomeViewModel: ObservableObject {
    // MARK: - Properties
 
    @Published var cityName = ""
-
    @Published var locationResults: [Location] = []
+   @Published var searchText = ""
+   @Published var lastLocation: Location?
+   @Published var isLastDisplayed = false
+   @Published var isLocationShared = false
 
    @Injected(\.RESTService) var RESTService
+   @Injected(\.analytics) var analytics
 
    // MARK: - Methods
 
@@ -25,8 +29,21 @@ final class HomeViewModel: ObservableObject {
       switch result {
          case let .success(data):
             locationResults = data
-         case let .failure(failure):
-            print(failure)
+         case let .failure(error):
+            analytics.logError(error: error)
+      }
+   }
+
+   func loadData() {
+      let locationDataOptional = UserDefaults.standard.data(forKey: Constants.lastSearchedLocationKey)
+      if let locationData = locationDataOptional {
+         do {
+            let location = try JSONDecoder().decode(Location.self, from: locationData)
+            lastLocation = location
+            isLastDisplayed = true
+         } catch {
+            analytics.logError(error: error)
+         }
       }
    }
 }

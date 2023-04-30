@@ -9,7 +9,7 @@ import Foundation
 
 struct WeatherReport: Decodable, Identifiable {
    let id: Int
-   let coOrdinates: CoOrdinates
+   var coOrdinates: CoOrdinates
    let weather: [Weather]
    let base: String
    let main: MainWeather

@@ -28,3 +28,9 @@ extension InjectedValues {
    }
 }
 
+extension InjectedValues {
+   var analytics: AnalyticsProtocol {
+      get { Self[AnalyticsServiceKey.self] }
+      set { Self[AnalyticsServiceKey.self] = newValue }
+   }
+}

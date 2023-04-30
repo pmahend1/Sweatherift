@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": 10.99,
+        "lat": 44.34
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "overcast clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 289.35,
+        "feels_like": 288.85,
+        "temp_min": 287.93,
+        "temp_max": 290.56,
+        "pressure": 1015,
+        "humidity": 70,
+        "sea_level": 1015,
+        "grnd_level": 931
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 0.82,
+        "deg": 139,
+        "gust": 2.69
+    },
+    "clouds": {
+        "all": 97
+    },
+    "dt": 1682699995,
+    "sys": {
+        "type": 2,
+        "id": 2011351,
+        "country": "IT",
+        "sunrise": 1682655114,
+        "sunset": 1682705701
+    },
+    "timezone": 7200,
+    "id": 3163858,
+    "name": "Zocca",
+    "cod": 200
+}
