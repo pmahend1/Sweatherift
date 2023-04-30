@@ -9,50 +9,37 @@ import SwiftUI
 
 struct HomeView: View {
    @StateObject private var viewModel = HomeViewModel()
-   // mar
-   var body: some View {
-      // NavigationView {
-      VStack(alignment: .leading, spacing: .zero) {
-         Text("Enter City")
-            .font(.caption)
-            .padding(.leading, 5)
-         TextField("Enter City", text: $viewModel.cityName)
-            .textFieldStyle(.roundedBorder)
-            .padding(.top, 5)
+   @State private var searchText = ""
+   // MARK: - Body
 
-         Button("Search") {
-            Task { @MainActor in
-               await viewModel.getWeather(location: viewModel.cityName)
+   var body: some View {
+      NavigationStack {
+         List {
+            ForEach(searchResults, id: \.id) { location in
+               NavigationLink {
+                  //Text("\(location.name),\(location.state),\(location.country)")
+                  WeatherView()
+               } label: {
+                  Text("\(location.name),\(location.state),\(location.country)")
+               }
             }
          }
-         .buttonStyle(.borderedProminent)
-         .padding(.top, 10)
-
-         Spacer()
-
-         if let weatherReport = viewModel.weatherReport {
-            Text("\(weatherReport.name)")
-               .font(.title)
-//              Text("Lattitue: \(String(describing: weatherReport.coOrdinates.lat))")
-//              Text("Longitude: \(String(describing: weatherReport.coOrdinates.lon))")
-
-            if let iconUrl = URL(string: "https://openweathermap.org/img/wn/\(weatherReport.weather[0].icon)@2x.png") {
-               AsyncImage(url: iconUrl)
-                  .scaledToFit()
-            }
-
-            Text("Temp: \(viewModel.convertTemperature(temp: weatherReport.main.temp))")
-            Text("Feels Like: \(viewModel.convertTemperature(temp: weatherReport.main.feelsLike))")
-            Text("Min: \(viewModel.convertTemperature(temp: weatherReport.main.minTemp))")
-            Text("Max: \(viewModel.convertTemperature(temp: weatherReport.main.maxTemp))")
-
-            Text("Pressure: \(weatherReport.main.pressure)")
-            Text("Humidity: \(weatherReport.main.humidity.formatted(.percent))")
+         .navigationTitle("Sweatherift")
+      }
+      .searchable(text: $searchText)
+      .onChange(of: searchText) { newValue in
+         Task {
+            await viewModel.getLocations(searchText: newValue)
          }
       }
-      .padding()
-      .navigationTitle("Sweatherift")
-      // }
+   }
+
+   var searchResults: [Location] {
+      if searchText.isEmpty || searchText.count < 3 {
+         return []
+      } else {
+         return viewModel.locationResults // .map { $0.name }
+      }
    }
 }
 

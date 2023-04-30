@@ -12,12 +12,15 @@ final class HomeViewModel: ObservableObject {
    // MARK: - Properties
 
    @Published var cityName = ""
-   @Published var weatherReport: WeatherReport? = nil
+ 
+   @Published var locationResults: [Location] = []
 
    // MARK: - Methods
 
-   func getWeather(location: String) async {
-      let url = "\(Constants.weatherUrl)\(location)&APPID=\(Constants.weatherAPIKey)"
+   
+
+   func getLocations(searchText: String) async {
+      let url = "\(Constants.locationUrl)\(searchText)&limit=5&APPID=\(Constants.weatherAPIKey)"
       let result = await RESTService().get(url: url)
       switch result {
       case let .success(success):
@@ -25,21 +28,13 @@ final class HomeViewModel: ObservableObject {
          jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
 
          do {
-            let data = try jsonDecoder.decode(WeatherReport.self, from: success)
-            weatherReport = data
+            let data = try jsonDecoder.decode([Location].self, from: success)
+            locationResults = data
          } catch {
             print(String(describing: error))
          }
       case let .failure(failure):
          print(failure)
       }
-   }
-
-   func convertTemperature(temp: Double) -> String {
-      let mf = MeasurementFormatter()
-      mf.locale = .current
-      mf.numberFormatter.maximumFractionDigits = 0
-      let input = Measurement(value: temp, unit: UnitTemperature.kelvin)
-      return mf.string(from: input)
    }
 }
