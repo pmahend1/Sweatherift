@@ -14,3 +14,11 @@ struct RESTServiceKey: InjectionKey {
 struct AnalyticsServiceKey: InjectionKey {
    static var currentValue: AnalyticsProtocol = AnalyticsService()
 }
+
+struct WeatherRepositoryKey: InjectionKey {
+   static var currentValue: WeatherRepositoryProtocol = WeatherRepository()
+}
+
+struct WeatherAPIServiceKey: InjectionKey {
+   static var currentValue: WeatherAPIProtocol = WeatherAPIService()
+}

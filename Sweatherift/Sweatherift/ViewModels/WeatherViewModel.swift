@@ -5,6 +5,7 @@
 //  Created by Prateek Mahendrakar on 4/29/23.
 //
 
+import CoreLocation
 import Foundation
 
 @MainActor
@@ -14,21 +15,32 @@ final class WeatherViewModel: ObservableObject {
    @Published var weatherReport: WeatherReport? = nil
    @Published var isBusy = false
 
-   @Injected(\.RESTService) var RESTService
+   @Injected(\.weatherRepository) var weatherRepository
    @Injected(\.analytics) var analytics
 
+   private var location: Location?
+   private var coOrdinates: CLLocationCoordinate2D?
+
    var title: String {
-      var stateText = ""
-      if let state = location.state {
-         stateText = ", \(state)"
+      if let location = location {
+         var stateText = ""
+         if let state = location.state {
+            stateText = ", \(state)"
+         }
+         return "\(location.name)\(stateText), \(location.country)"
+      } else {
+         return "My Location"
       }
-      return "\(location.name)\(stateText), \(location.country)"
    }
 
-   private var location: Location
+   // MARK: - Init
 
    init(for location: Location) {
       self.location = location
+   }
+
+   init(for coOrdinates: CLLocationCoordinate2D) {
+      self.coOrdinates = coOrdinates
    }
 
    // MARK: - Methods
@@ -38,8 +50,21 @@ final class WeatherViewModel: ObservableObject {
          isBusy = false
       }
       isBusy = true
-      let url = "\(Constants.weatherUrl)lat=\(location.lat)&lon=\(location.lon)&APPID=\(Constants.weatherAPIKey)"
-      let result = await RESTService.get(url: url, returnType: WeatherReport.self)
+
+      var lat = 0.0
+      var lon = 0.0
+
+      if let location = location {
+         lat = location.lat
+         lon = location.lon
+      } else if let coOrdinates = coOrdinates {
+         lat = coOrdinates.latitude
+         lon = coOrdinates.longitude
+      } else {
+         return
+      }
+
+      let result = await weatherRepository.getWeatherByLatLon(lat: lat, lon: lon, useCache: true)
 
       switch result {
          case let .success(weatherData):

@@ -5,9 +5,8 @@
 //  Created by Prateek Mahendrakar on 4/27/23.
 //
 
-
-import SwiftUI
 import CoreLocationUI
+import SwiftUI
 
 struct HomeView: View {
    // MARK: - Properties
@@ -27,45 +26,47 @@ struct HomeView: View {
 
    var body: some View {
       NavigationStack {
-         List {
+         VStack(spacing: .zero) {
+            Text("Enter at least 3 characters to begin search or share your location")
+               .font(.callout)
+
             LocationButton(.shareMyCurrentLocation) {
                locationManager.requestLocation()
                viewModel.isLocationShared = true
             }
             .frame(height: 44)
-            .padding()
+            .padding(.top, 10)
 
-            if let location = locationManager.location {
-               Text("Your location: \(location.latitude), \(location.longitude)")
+            if locationManager.location != nil {
+               Text("You have shared your location")
+                  .font(.caption)
             }
-
-            ForEach(searchResults, id: \.id) { location in
-               NavigationLink(value: location) {
-                  Text("\(location.name)\(location.state == nil ? "" : ",\(location.state ?? "")"), \(location.country)")
+            List {
+               ForEach(searchResults, id: \.id) { location in
+                  NavigationLink(value: location) {
+                     Text("\(location.name)\(location.state == nil ? "" : ",\(location.state ?? "")"), \(location.country)")
+                  }
                }
             }
-         }
-         .navigationDestination(for: Location.self) { location in
-            WeatherView(for: location)
-         }
-         .navigationDestination(isPresented: $viewModel.isLastDisplayed) {
-            if let location = viewModel.lastLocation {
+            .searchable(text: $viewModel.searchText)
+            .navigationDestination(for: Location.self) { location in
                WeatherView(for: location)
             }
-         }
-         .navigationDestination(isPresented: $viewModel.isLocationShared) {
-            if let location = locationManager.location {
-               let loc = Location(name: "",
-                                  lat: location.latitude,
-                                  lon: location.longitude,
-                                  country: "",
-                                  state: "")
-               WeatherView(for: loc)
+            .navigationDestination(isPresented: $viewModel.isLastDisplayed) {
+               if let location = viewModel.lastLocation {
+                  WeatherView(for: location)
+               }
             }
+            .navigationDestination(isPresented: $viewModel.isLocationShared) {
+               if let location = locationManager.location {
+                  WeatherView(for: location)
+               }
+            }
+            .navigationTitle("Sweatherift")
          }
-         .navigationTitle("Sweatherift")
+         .padding(.horizontal, 20)
       }
-      .searchable(text: $viewModel.searchText)
+
       .onChange(of: viewModel.searchText) { newValue in
          Task {
             await viewModel.getLocations(searchText: newValue)
@@ -83,4 +84,3 @@ struct HomeView_Previews: PreviewProvider {
       HomeView()
    }
 }
-

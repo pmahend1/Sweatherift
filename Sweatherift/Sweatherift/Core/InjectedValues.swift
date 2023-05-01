@@ -34,3 +34,17 @@ extension InjectedValues {
       set { Self[AnalyticsServiceKey.self] = newValue }
    }
 }
+
+extension InjectedValues {
+   var weatherRepository: WeatherRepositoryProtocol {
+      get { Self[WeatherRepositoryKey.self] }
+      set { Self[WeatherRepositoryKey.self] = newValue }
+   }
+}
+
+extension InjectedValues {
+   var weatherAPIService: WeatherAPIProtocol {
+      get { Self[WeatherAPIServiceKey.self] }
+      set { Self[WeatherAPIServiceKey.self] = newValue }
+   }
+}

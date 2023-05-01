@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 final class HomeViewModel: ObservableObject {
-   // MARK: - Properties
+   // MARK: - Published Properties
 
    @Published var cityName = ""
    @Published var locationResults: [Location] = []
@@ -18,14 +18,15 @@ final class HomeViewModel: ObservableObject {
    @Published var isLastDisplayed = false
    @Published var isLocationShared = false
 
-   @Injected(\.RESTService) var RESTService
+   // MARK: - Injected Properties
+
+   @Injected(\.weatherRepository) var weatherRepository
    @Injected(\.analytics) var analytics
 
    // MARK: - Methods
 
    func getLocations(searchText: String) async {
-      let url = "\(Constants.locationUrl)\(searchText)&limit=5&APPID=\(Constants.weatherAPIKey)"
-      let result = await RESTService.get(url: url, returnType: [Location].self)
+      let result = await weatherRepository.searchLocations(searchTerm: searchText, useCache: true)
       switch result {
          case let .success(data):
             locationResults = data

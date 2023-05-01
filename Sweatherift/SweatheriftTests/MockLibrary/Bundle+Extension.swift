@@ -12,7 +12,9 @@ struct BundleError: Error {
 }
 
 extension Bundle {
-   func decodeJSONResource<T>(_ file: String, withExtension: String = "json", returnType: T.Type) -> Result<T, Error> where T: Decodable {
+   func decodeJSONResource<T>(_ file: String,
+                              withExtension: String = "json",
+                              returnType _: T.Type) -> Result<T, Error> where T: Decodable {
       guard let url = url(forResource: file, withExtension: withExtension) else {
          return .failure(BundleError(message: "Failed to locate \(file) in bundle."))
       }

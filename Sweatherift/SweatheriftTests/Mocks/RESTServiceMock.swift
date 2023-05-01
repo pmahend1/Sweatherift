@@ -13,9 +13,9 @@ class RESTServiceMock: RESTProtocol {
 
    var shouldError = false
    var error = APIError(message: "Error thrown from mock.")
-   var returnableObject: Any? = nil
+   var returnableObject: (Decodable)? = nil
 
-   func get<T>(url _: String, returnType _: T.Type) async -> Result<T, Error> where T: Decodable {
+   func get<T>(url _: String, returnType: T.Type) async -> Result<T, Error> where T: Decodable {
       guard !shouldError else {
          return .failure(error)
       }
