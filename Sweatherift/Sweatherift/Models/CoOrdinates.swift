@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CoOrdinates: Decodable {
+struct CoOrdinates: Codable {
    var lat: Decimal
    var lon: Decimal
 }

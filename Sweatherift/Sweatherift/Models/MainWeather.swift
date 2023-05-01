@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MainWeather: Decodable {
+struct MainWeather: Codable {
    var temp: Double
    var feelsLike: Double
    var minTemp: Double

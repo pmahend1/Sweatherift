@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherReport: Decodable, Identifiable {
+struct WeatherReport: Codable, Identifiable {
    let id: Int
    var coOrdinates: CoOrdinates
    let weather: [Weather]
