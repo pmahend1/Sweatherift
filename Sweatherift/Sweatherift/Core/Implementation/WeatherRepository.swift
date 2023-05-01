@@ -71,6 +71,6 @@ class WeatherRepository: WeatherRepositoryProtocol {
    }
    
    func clearAll() {
-      //
+      //To be implemented
    }
 }

@@ -18,8 +18,8 @@ final class WeatherViewModel: ObservableObject {
    @Injected(\.weatherRepository) var weatherRepository
    @Injected(\.analytics) var analytics
 
-   private var location: Location?
-   private var coOrdinates: CLLocationCoordinate2D?
+   var location: Location?
+   var coOrdinates: CLLocationCoordinate2D?
 
    var title: String {
       if let location = location {

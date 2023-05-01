@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  Sweatherift
+
+  Created by Prateek Mahendrakar on 4/30/23.
+  
+*/
+
+//MARK: - Weather
+
+"searchDescription" = "Enter at least 3 characters to begin search or share your location.";
+"locationSharedMessage" = "You have shared your location.";
+"temperature:%@" = "Temperature: %@";
+"feelsLike:%@" = "Feels Like: %@";
+"min:%@" = "Min: %@";
+"max:%@" = "Max: %@";
+"pressure:%lld" = "Pressure: %lldmbar";
+"wind" = "Wind";
+"speed:%@" = "Speed: %@km/h";
+"degree:%lld" = "Degree: %lld°";
+"humidity:%@" = "Humidity: %@";
+"clouds:%@" = "Clouds: %@";
+"noWeatherReportFound" = "No weather report found. Please try again later!";

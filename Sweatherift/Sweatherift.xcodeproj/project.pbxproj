@@ -20,6 +20,9 @@
 		6E96E65929FF07AC002B3492 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E65829FF07AC002B3492 /* Repository.swift */; };
 		6E96E65D29FF07E6002B3492 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E65C29FF07E6002B3492 /* Cache.swift */; };
 		6E96E65F29FF63F4002B3492 /* Resettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E65E29FF63F4002B3492 /* Resettable.swift */; };
+		6E96E66129FF6764002B3492 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E96E66029FF6764002B3492 /* Localizable.strings */; };
+		6E96E66429FF6A72002B3492 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E66329FF6A72002B3492 /* Localized.swift */; };
+		6E96E66629FF790A002B3492 /* WeatherViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E66529FF790A002B3492 /* WeatherViewModelTests.swift */; };
 		6E9C69CC29FECC7B006CEDAD /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9C69CB29FECC7B006CEDAD /* LocationManager.swift */; };
 		6E9C69CF29FED0CF006CEDAD /* RESTServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9C69CE29FED0CF006CEDAD /* RESTServiceMock.swift */; };
 		6E9C69D129FED63B006CEDAD /* TemperatureConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9C69D029FED63B006CEDAD /* TemperatureConverter.swift */; };
@@ -47,6 +50,7 @@
 		6EBB4BD129FB0718005C35CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EBB4BD029FB0718005C35CF /* Preview Assets.xcassets */; };
 		6EBB4BE529FB0719005C35CF /* SweatheriftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB4BE429FB0719005C35CF /* SweatheriftUITests.swift */; };
 		6EBB4BE729FB0719005C35CF /* SweatheriftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB4BE629FB0719005C35CF /* SweatheriftUITestsLaunchTests.swift */; };
+		6EBCB73B29FF7EE2000F8F19 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCB73A29FF7EE2000F8F19 /* AppError.swift */; };
 		6EDBB29D29FDD5CB0044F34D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB29C29FDD5CB0044F34D /* Location.swift */; };
 		6EDBB29F29FE09350044F34D /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB29E29FE09350044F34D /* WeatherView.swift */; };
 		6EDBB2A129FE0D800044F34D /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB2A029FE0D800044F34D /* WeatherViewModel.swift */; };
@@ -85,6 +89,9 @@
 		6E96E65829FF07AC002B3492 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		6E96E65C29FF07E6002B3492 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		6E96E65E29FF63F4002B3492 /* Resettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resettable.swift; sourceTree = "<group>"; };
+		6E96E66029FF6764002B3492 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		6E96E66329FF6A72002B3492 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		6E96E66529FF790A002B3492 /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
 		6E9C69CB29FECC7B006CEDAD /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6E9C69CE29FED0CF006CEDAD /* RESTServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTServiceMock.swift; sourceTree = "<group>"; };
 		6E9C69D029FED63B006CEDAD /* TemperatureConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureConverter.swift; sourceTree = "<group>"; };
@@ -115,6 +122,8 @@
 		6EBB4BE029FB0719005C35CF /* SweatheriftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweatheriftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EBB4BE429FB0719005C35CF /* SweatheriftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweatheriftUITests.swift; sourceTree = "<group>"; };
 		6EBB4BE629FB0719005C35CF /* SweatheriftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweatheriftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6EBCB73A29FF7EE2000F8F19 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		6EBCB73C29FF8039000F8F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6EDBB29C29FDD5CB0044F34D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		6EDBB29E29FE09350044F34D /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		6EDBB2A029FE0D800044F34D /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -149,6 +158,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E96E66229FF69AD002B3492 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E96E66029FF6764002B3492 /* Localizable.strings */,
+				6E96E66329FF6A72002B3492 /* Localized.swift */,
+				6EBB4BCD29FB0718005C35CF /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		6E9C69CD29FED0B2006CEDAD /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +245,7 @@
 				6EA75C4229FC2A7800602ED0 /* Implementation */,
 				6EA75C4129FC2A6E00602ED0 /* Protocols */,
 				6EA75C4529FC2B5400602ED0 /* APIError.swift */,
+				6EBCB73A29FF7EE2000F8F19 /* AppError.swift */,
 				6EA75C4729FC2FE700602ED0 /* Constants.swift */,
 				6EDBB2A629FE28D90044F34D /* InjectedKeys.swift */,
 				6EDBB2A829FE29170044F34D /* InjectedValues.swift */,
@@ -284,13 +304,14 @@
 		6EBB4BC829FB0717005C35CF /* Sweatherift */ = {
 			isa = PBXGroup;
 			children = (
+				6EBCB73C29FF8039000F8F19 /* Info.plist */,
+				6E96E66229FF69AD002B3492 /* Resources */,
 				6EA75C3E29FB585600602ED0 /* Core */,
 				6E9C69D229FED748006CEDAD /* Helpers */,
 				6EA75C3929FB52FA00602ED0 /* Models */,
 				6EA75C3829FB52F200602ED0 /* ViewModels */,
 				6EA75C3729FB52EC00602ED0 /* Views */,
 				6EBB4BC929FB0717005C35CF /* SweatheriftApp.swift */,
-				6EBB4BCD29FB0718005C35CF /* Assets.xcassets */,
 				6EBB4BCF29FB0718005C35CF /* Preview Content */,
 			);
 			path = Sweatherift;
@@ -310,6 +331,7 @@
 				6E9C69D729FED805006CEDAD /* MockLibrary */,
 				6E9C69CD29FED0B2006CEDAD /* Mocks */,
 				6E9C69D529FED79F006CEDAD /* HomeViewModelTests.swift */,
+				6E96E66529FF790A002B3492 /* WeatherViewModelTests.swift */,
 			);
 			path = SweatheriftTests;
 			sourceTree = "<group>";
@@ -428,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E96E64929FEE588002B3492 /* WeatherByLatLon.json in Resources */,
+				6E96E66129FF6764002B3492 /* Localizable.strings in Resources */,
 				6E96E64A29FEE588002B3492 /* WeatherByLocation.json in Resources */,
 				6E96E64B29FEE588002B3492 /* GeoByLocationName.json in Resources */,
 				6EBB4BD129FB0718005C35CF /* Preview Assets.xcassets in Resources */,
@@ -461,7 +484,9 @@
 			files = (
 				6EA75C4A29FC319700602ED0 /* Weather.swift in Sources */,
 				6EDBB2A729FE28D90044F34D /* InjectedKeys.swift in Sources */,
+				6E96E66429FF6A72002B3492 /* Localized.swift in Sources */,
 				6EBB4BCA29FB0717005C35CF /* SweatheriftApp.swift in Sources */,
+				6EBCB73B29FF7EE2000F8F19 /* AppError.swift in Sources */,
 				6EA75C5429FC356300602ED0 /* System.swift in Sources */,
 				6E9C69E029FEDAEC006CEDAD /* AnalyticsProtocol.swift in Sources */,
 				6EA75C4029FB589B00602ED0 /* RESTProtocol.swift in Sources */,
@@ -503,6 +528,7 @@
 				6E9C69CF29FED0CF006CEDAD /* RESTServiceMock.swift in Sources */,
 				6E96E64D29FEE6AF002B3492 /* Bundle+Extension.swift in Sources */,
 				6E9C69D629FED79F006CEDAD /* HomeViewModelTests.swift in Sources */,
+				6E96E66629FF790A002B3492 /* WeatherViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +681,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sweatherift/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sweatherift/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need location access for getting weather data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -685,6 +712,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sweatherift/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sweatherift/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need location access for getting weather data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

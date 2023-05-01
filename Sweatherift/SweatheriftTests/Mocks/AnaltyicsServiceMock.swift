@@ -15,6 +15,6 @@ class AnaltyicsServiceMock: AnalyticsProtocol {
    // MARK: - Implementation
 
    func logError(error: Error, properties: [String: String]) {
-      wasLogErrorCalled = true
+      wasLogErrorCalled = true //mark the flag to true to verify this was called
    }
 }

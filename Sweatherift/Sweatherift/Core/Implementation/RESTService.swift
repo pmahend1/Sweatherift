@@ -9,9 +9,9 @@ import Foundation
 
 class RESTService: RESTProtocol {
    func get<T: Decodable>(url: String, returnType: T.Type) async -> Result<T, Error> {
-      let urlOptional = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+      let urlOptional = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) //converts space to %20
       guard let urlString = urlOptional, let url = URL(string: urlString) else {
-         return .failure(APIError(message: "Invalid URL"))
+         return .failure(AppError(message: "Invalid URL"))
       }
 
       do {

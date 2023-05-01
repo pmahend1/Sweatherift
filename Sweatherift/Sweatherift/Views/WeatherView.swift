@@ -5,8 +5,8 @@
 //  Created by Prateek Mahendrakar on 4/29/23.
 //
 
-import SwiftUI
 import CoreLocation
+import SwiftUI
 
 struct WeatherView: View {
    @StateObject private var viewModel: WeatherViewModel
@@ -14,7 +14,7 @@ struct WeatherView: View {
    init(for location: Location) {
       _viewModel = StateObject(wrappedValue: .init(for: location))
    }
-   
+
    init(for coOrdinates: CLLocationCoordinate2D) {
       _viewModel = StateObject(wrappedValue: .init(for: coOrdinates))
    }
@@ -27,41 +27,44 @@ struct WeatherView: View {
          } else {
             VStack(alignment: .center, spacing: .zero) {
                if let weatherReport = viewModel.weatherReport, weatherReport.weather.count > 0 {
-                  Text("\(weatherReport.name)")
+                  Text(weatherReport.name)
                      .font(.title)
+                  Text(weatherReport.system.country)
+                     .font(.body)
+                  
 
                   let currentWeather = weatherReport.weather[0]
-                  if let iconUrl = URL(string: "https://openweathermap.org/img/wn/\(currentWeather.icon)@2x.png") {
-                     AsyncImage(url: iconUrl)
+                  if let iconURL = URL(string: Constants.iconURL(icon: currentWeather.icon)) {
+                     AsyncImage(url: iconURL)
                         .scaledToFit()
                   }
                   Group {
                      Text("\(currentWeather.main) - \(currentWeather.description)")
                         .padding(.top, 20)
-                     Text("Temp: \(Converter.toLocaleTemperature(weatherReport.main.temp))")
+                     Text(Localized.temperatureFormat(Converter.toLocaleTemperature(weatherReport.main.temp)))
                         .padding(.top, 10)
-                     Text("Feels Like: \(Converter.toLocaleTemperature(weatherReport.main.feelsLike))")
-                     Text("Min: \(Converter.toLocaleTemperature(weatherReport.main.minTemp))")
-                     Text("Max: \(Converter.toLocaleTemperature(weatherReport.main.maxTemp))")
+                     Text(Localized.feelsLikeFormat(Converter.toLocaleTemperature(weatherReport.main.feelsLike)))
+                     Text(Localized.minTempFormat(Converter.toLocaleTemperature(weatherReport.main.minTemp)))
+                     Text(Localized.maxTempFormat(Converter.toLocaleTemperature(weatherReport.main.maxTemp)))
                   }
 
                   Group {
-                     Text("Pressure: \(weatherReport.main.pressure)mbar")
+                     Text(Localized.pressureFormat(weatherReport.main.pressure))
                         .padding(.top, 20)
-                     Text("Humidity: \(weatherReport.main.humidity.formatted(.percent))")
-                     Text("Clouds: \(weatherReport.clouds.all.formatted(.percent))")
+                     Text(Localized.humidityFormat(weatherReport.main.humidity.formatted(.percent)))
+                     Text(Localized.cloudsFormat(weatherReport.clouds.all.formatted(.percent)))
                   }
 
                   Group {
-                     Text("Wind")
+                     Text(Localized.wind)
                         .font(.title3)
                         .padding(.top, 20)
 
-                     Text("Speed: \(weatherReport.wind.speed.formatted())km/h")
-                     Text("Degree: \(weatherReport.wind.deg)°")
+                     Text(Localized.speedFormat(weatherReport.wind.speed.formatted()))
+                     Text(Localized.degreeFormat(weatherReport.wind.deg))
                   }
                } else {
-                  Text("No weather report found. Please try again later!")
+                  Text(Localized.noWeatherReportFound)
                }
             }
             .padding(.all, 20)
@@ -70,7 +73,7 @@ struct WeatherView: View {
       .task {
          await viewModel.getWeather()
       }
-      .navigationTitle(viewModel.title )
+      .navigationTitle(viewModel.title)
       .navigationBarTitleDisplayMode(.inline)
    }
 }

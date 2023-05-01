@@ -27,7 +27,7 @@ struct HomeView: View {
    var body: some View {
       NavigationStack {
          VStack(spacing: .zero) {
-            Text("Enter at least 3 characters to begin search or share your location")
+            Text(Localized.searchDescription)
                .font(.callout)
 
             LocationButton(.shareMyCurrentLocation) {
@@ -38,7 +38,7 @@ struct HomeView: View {
             .padding(.top, 10)
 
             if locationManager.location != nil {
-               Text("You have shared your location")
+               Text(Localized.locationSharedMessage)
                   .font(.caption)
             }
             List {

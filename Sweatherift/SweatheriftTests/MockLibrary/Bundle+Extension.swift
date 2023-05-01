@@ -12,6 +12,11 @@ struct BundleError: Error {
 }
 
 extension Bundle {
+   /// Loads JSON file and decodes to return result or returns an error
+   /// - Parameters:
+   ///   - file: file name
+   ///   - withExtension: extension. Default is json
+   /// - Returns: T of Decodable type
    func decodeJSONResource<T>(_ file: String,
                               withExtension: String = "json",
                               returnType _: T.Type) -> Result<T, Error> where T: Decodable {
