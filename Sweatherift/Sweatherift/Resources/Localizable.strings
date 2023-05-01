@@ -16,7 +16,7 @@
 "max:%@" = "Max: %@";
 "pressure:%lld" = "Pressure: %lldmbar";
 "wind" = "Wind";
-"speed:%@" = "Speed: %@km/h";
+"speed:%@" = "Speed: %@km/h";//TODO: - convert to locale mph or kmh
 "degree:%lld" = "Degree: %lld°";
 "humidity:%@" = "Humidity: %@";
 "clouds:%@" = "Clouds: %@";
