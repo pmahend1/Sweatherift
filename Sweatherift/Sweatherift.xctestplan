@@ -1,0 +1,46 @@
+{
+  "configurations" : [
+    {
+      "id" : "BB5D70D4-0F5C-48B9-8B78-AA4A999CDAD2",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Sweatherift.xcodeproj",
+          "identifier" : "6EBB4BC529FB0717005C35CF",
+          "name" : "Sweatherift"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Sweatherift.xcodeproj",
+      "identifier" : "6EBB4BC529FB0717005C35CF",
+      "name" : "Sweatherift"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Sweatherift.xcodeproj",
+        "identifier" : "6EBB4BD529FB0719005C35CF",
+        "name" : "SweatheriftTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Sweatherift.xcodeproj",
+        "identifier" : "6EBB4BDF29FB0719005C35CF",
+        "name" : "SweatheriftUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
