@@ -31,12 +31,10 @@ struct WeatherView: View {
                      .font(.title)
                   Text(weatherReport.system.country)
                      .font(.body)
-                  
 
                   let currentWeather = weatherReport.weather[0]
                   if let iconURL = URL(string: Constants.iconURL(icon: currentWeather.icon)) {
-                     AsyncImage(url: iconURL)
-                        .scaledToFit()
+                     CachedAsyncImageView(url: iconURL)
                   }
                   Group {
                      Text("\(currentWeather.main) - \(currentWeather.description)")
