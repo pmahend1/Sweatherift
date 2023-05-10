@@ -12,6 +12,7 @@ struct SweatheriftApp: App {
    var body: some Scene {
       WindowGroup {
          HomeView()
+            .onAppear()
       }
    }
 }

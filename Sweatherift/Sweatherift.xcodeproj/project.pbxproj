@@ -60,6 +60,8 @@
 		6EDBB2AB29FE2B2D0044F34D /* InjectedPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB2AA29FE2B2D0044F34D /* InjectedPropertyWrapper.swift */; };
 		6EE869572A0162CF0005A106 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE869562A0162CF0005A106 /* CachedAsyncImageView.swift */; };
 		6EE869592A0163370005A106 /* CachedAsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE869582A0163370005A106 /* CachedAsyncImageLoader.swift */; };
+		6EFEFF842A0B274100878230 /* KeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFEFF832A0B274100878230 /* KeyChainProtocol.swift */; };
+		6EFEFF862A0B283000878230 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFEFF852A0B283000878230 /* KeyChainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +137,8 @@
 		6EDBB2AA29FE2B2D0044F34D /* InjectedPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedPropertyWrapper.swift; sourceTree = "<group>"; };
 		6EE869562A0162CF0005A106 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
 		6EE869582A0163370005A106 /* CachedAsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageLoader.swift; sourceTree = "<group>"; };
+		6EFEFF832A0B274100878230 /* KeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProtocol.swift; sourceTree = "<group>"; };
+		6EFEFF852A0B283000878230 /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +275,7 @@
 				6E96E65029FEF6B2002B3492 /* WeatherAPIProtocol.swift */,
 				6E96E65229FEF787002B3492 /* WeatherRepositoryProtocol.swift */,
 				6E96E65E29FF63F4002B3492 /* Resettable.swift */,
+				6EFEFF832A0B274100878230 /* KeyChainProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				6E9C69E129FEDB76006CEDAD /* AnalyticsService.swift */,
 				6E96E65429FF0359002B3492 /* WeatherRepository.swift */,
 				6E96E65629FF0633002B3492 /* WeatherAPIService.swift */,
+				6EFEFF852A0B283000878230 /* KeyChainService.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -495,6 +501,7 @@
 				6EBCB73B29FF7EE2000F8F19 /* AppError.swift in Sources */,
 				6EA75C5429FC356300602ED0 /* System.swift in Sources */,
 				6E9C69E029FEDAEC006CEDAD /* AnalyticsProtocol.swift in Sources */,
+				6EFEFF862A0B283000878230 /* KeyChainService.swift in Sources */,
 				6EA75C4029FB589B00602ED0 /* RESTProtocol.swift in Sources */,
 				6EA75C3D29FB572600602ED0 /* HomeViewModel.swift in Sources */,
 				6E9C69D129FED63B006CEDAD /* TemperatureConverter.swift in Sources */,
@@ -512,6 +519,7 @@
 				6EA75C4829FC2FE700602ED0 /* Constants.swift in Sources */,
 				6E96E65129FEF6B2002B3492 /* WeatherAPIProtocol.swift in Sources */,
 				6EA75C4C29FC32F200602ED0 /* CoOrdinates.swift in Sources */,
+				6EFEFF842A0B274100878230 /* KeyChainProtocol.swift in Sources */,
 				6E96E65F29FF63F4002B3492 /* Resettable.swift in Sources */,
 				6EDBB2A129FE0D800044F34D /* WeatherViewModel.swift in Sources */,
 				6E9C69CC29FECC7B006CEDAD /* LocationManager.swift in Sources */,
