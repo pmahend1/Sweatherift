@@ -22,3 +22,7 @@ struct WeatherRepositoryKey: InjectionKey {
 struct WeatherAPIServiceKey: InjectionKey {
    static var currentValue: WeatherAPIProtocol = WeatherAPIService()
 }
+
+struct KeyChainServiceKey: InjectionKey {
+   static var currentValue: KeyChainProtocol = KeyChainService.standard
+}

@@ -11,7 +11,8 @@ enum Constants {
    static let locationNameURL = "https://api.openweathermap.org/geo/1.0/direct?q="
 
    static let weatherURL = "https://api.openweathermap.org/data/2.5/weather?"
-   static let weatherAPIKey = "22d8451191cd2184aa1df845efe8e52f"
+   //static let weatherAPIKey = "22d8451191cd2184aa1df845efe8e52f"
+   static let weatherAPIKey = "weatherAPIKey"
    static let lastSearchedLocationKey = "lastSearchedLocation"
 
    static func locationLatLonURL(lat: Double, lon: Double) -> String {

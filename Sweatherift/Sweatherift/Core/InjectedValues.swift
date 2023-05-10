@@ -48,3 +48,10 @@ extension InjectedValues {
       set { Self[WeatherAPIServiceKey.self] = newValue }
    }
 }
+
+extension InjectedValues {
+   var keyChainService: KeyChainProtocol {
+      get { Self[KeyChainServiceKey.self] }
+      set { Self[KeyChainServiceKey.self] = newValue }
+   }
+}

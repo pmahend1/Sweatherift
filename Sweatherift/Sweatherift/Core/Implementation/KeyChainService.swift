@@ -9,22 +9,25 @@ import Foundation
 
 final class KeyChainService: KeyChainProtocol {
    static let standard = KeyChainService()
+   let account = "Sweatherift"
+
+   var keyValues: [String: Codable] = [:]
    private init() {}
 
-   func save<T>(_ item: T, service: String, account: String) where T: Decodable, T: Encodable {
+   func save<T>(_ item: T, key: String) where T: Decodable, T: Encodable {
       do {
          // Encode as JSON data and save in keychain
          let data = try JSONEncoder().encode(item)
-         save(data, service: service, account: account)
+         save(data, key: key)
 
       } catch {
          assertionFailure("Fail to encode item for keychain: \(error)")
       }
    }
 
-   func read<T>(service: String, account: String, type: T.Type) -> T? where T: Decodable, T: Encodable {
+   func read<T>(key: String, type: T.Type) -> T? where T: Decodable, T: Encodable {
       // Read item data from keychain
-      guard let data = read(service: service, account: account) else {
+      guard let data = read(key: key) else {
          return nil
       }
 
@@ -38,9 +41,9 @@ final class KeyChainService: KeyChainProtocol {
       }
    }
 
-   func delete(service: String, account: String) {
+   func delete(key: String) {
       let query = [
-         kSecAttrService: service,
+         kSecAttrService: key,
          kSecAttrAccount: account,
          kSecClass: kSecClassGenericPassword,
       ] as [CFString: Any] as CFDictionary
@@ -49,14 +52,14 @@ final class KeyChainService: KeyChainProtocol {
       SecItemDelete(query)
    }
 
-   func save(_ data: Data, service: String, account: String) {
+   func save(_ data: Data, key: String) {
       // Create query
       let query = [
          kSecValueData: data,
          kSecClass: kSecClassGenericPassword,
-         kSecAttrService: service,
+         kSecAttrService: key,
          kSecAttrAccount: account,
-      ] as CFDictionary
+      ] as [CFString: Any] as CFDictionary
 
       // Add data in query to keychain
       let status = SecItemAdd(query, nil)
@@ -67,13 +70,13 @@ final class KeyChainService: KeyChainProtocol {
       }
    }
 
-   func read(service: String, account: String) -> Data? {
+   func read(key: String) -> Data? {
       let query = [
-         kSecAttrService: service,
+         kSecAttrService: key,
          kSecAttrAccount: account,
          kSecClass: kSecClassGenericPassword,
          kSecReturnData: true,
-      ] as CFDictionary
+      ] as [CFString: Any] as CFDictionary
 
       var result: AnyObject?
       SecItemCopyMatching(query, &result)

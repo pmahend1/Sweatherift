@@ -22,6 +22,7 @@ final class HomeViewModel: ObservableObject {
 
    @Injected(\.weatherRepository) var weatherRepository
    @Injected(\.analytics) var analytics
+   @Injected(\.keyChainService) var keyChainService
 
    // MARK: - Methods
 
@@ -36,6 +37,12 @@ final class HomeViewModel: ObservableObject {
    }
 
    func loadData() {
+      if let weatherApiKey = keyChainService.read(key: Constants.weatherAPIKey, type: String.self) {
+         keyChainService.keyValues[Constants.weatherAPIKey] = weatherApiKey
+      } else {
+         return
+      }
+
       let locationDataOptional = UserDefaults.standard.data(forKey: Constants.lastSearchedLocationKey)
       if let locationData = locationDataOptional {
          do {

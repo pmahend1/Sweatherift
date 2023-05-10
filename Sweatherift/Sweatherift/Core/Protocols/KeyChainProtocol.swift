@@ -8,7 +8,8 @@
 import Foundation
 
 protocol KeyChainProtocol {
-   func save<T>(_ item: T, service: String, account: String) where T: Codable
-   func read<T>(service: String, account: String, type: T.Type) -> T? where T: Codable
-   func delete(service: String, account: String)
+   var keyValues: [String: Codable] { get set }
+   func save<T>(_ item: T, key: String) where T: Codable
+   func read<T>(key: String, type: T.Type) -> T? where T: Codable
+   func delete(key: String)
 }
