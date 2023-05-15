@@ -17,6 +17,8 @@ final class HomeViewModel: ObservableObject {
    @Published var lastLocation: Location?
    @Published var isLastDisplayed = false
    @Published var isLocationShared = false
+   @Published var showAPIView = false
+   @Published var isKeyPresent = false
 
    // MARK: - Injected Properties
 
@@ -39,7 +41,9 @@ final class HomeViewModel: ObservableObject {
    func loadData() {
       if let weatherApiKey = keyChainService.read(key: Constants.weatherAPIKey, type: String.self) {
          keyChainService.keyValues[Constants.weatherAPIKey] = weatherApiKey
+         isKeyPresent = true
       } else {
+         showAPIView = true
          return
       }
 

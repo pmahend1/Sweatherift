@@ -11,7 +11,7 @@ final class KeyChainService: KeyChainProtocol {
    static let standard = KeyChainService()
    let account = "Sweatherift"
 
-   var keyValues: [String: Codable] = [:]
+   var keyValues: [String: Any] = [:]
    private init() {}
 
    func save<T>(_ item: T, key: String) where T: Decodable, T: Encodable {
