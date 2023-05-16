@@ -17,11 +17,14 @@ final class HomeViewModel: ObservableObject {
    @Published var lastLocation: Location?
    @Published var isLastDisplayed = false
    @Published var isLocationShared = false
+   @Published var showAPIView = false
+   @Published var isKeyPresent = false
 
    // MARK: - Injected Properties
 
    @Injected(\.weatherRepository) var weatherRepository
    @Injected(\.analytics) var analytics
+   @Injected(\.keyChainService) var keyChainService
 
    // MARK: - Methods
 
@@ -36,6 +39,14 @@ final class HomeViewModel: ObservableObject {
    }
 
    func loadData() {
+      if let weatherApiKey = keyChainService.read(key: Constants.weatherAPIKey, type: String.self) {
+         keyChainService.keyValues[Constants.weatherAPIKey] = weatherApiKey
+         isKeyPresent = true
+      } else {
+         showAPIView = true
+         return
+      }
+
       let locationDataOptional = UserDefaults.standard.data(forKey: Constants.lastSearchedLocationKey)
       if let locationData = locationDataOptional {
          do {

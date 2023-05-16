@@ -51,6 +51,8 @@
 		6EBB4BE529FB0719005C35CF /* SweatheriftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB4BE429FB0719005C35CF /* SweatheriftUITests.swift */; };
 		6EBB4BE729FB0719005C35CF /* SweatheriftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB4BE629FB0719005C35CF /* SweatheriftUITestsLaunchTests.swift */; };
 		6EBCB73B29FF7EE2000F8F19 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCB73A29FF7EE2000F8F19 /* AppError.swift */; };
+		6ED7621C2A11372500830DCE /* APIKeyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7621B2A11372500830DCE /* APIKeyInputView.swift */; };
+		6ED7621E2A11375100830DCE /* APIKeyInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7621D2A11375100830DCE /* APIKeyInputViewModel.swift */; };
 		6EDBB29D29FDD5CB0044F34D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB29C29FDD5CB0044F34D /* Location.swift */; };
 		6EDBB29F29FE09350044F34D /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB29E29FE09350044F34D /* WeatherView.swift */; };
 		6EDBB2A129FE0D800044F34D /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB2A029FE0D800044F34D /* WeatherViewModel.swift */; };
@@ -60,6 +62,8 @@
 		6EDBB2AB29FE2B2D0044F34D /* InjectedPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBB2AA29FE2B2D0044F34D /* InjectedPropertyWrapper.swift */; };
 		6EE869572A0162CF0005A106 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE869562A0162CF0005A106 /* CachedAsyncImageView.swift */; };
 		6EE869592A0163370005A106 /* CachedAsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE869582A0163370005A106 /* CachedAsyncImageLoader.swift */; };
+		6EFEFF842A0B274100878230 /* KeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFEFF832A0B274100878230 /* KeyChainProtocol.swift */; };
+		6EFEFF862A0B283000878230 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFEFF852A0B283000878230 /* KeyChainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,8 @@
 		6EBB4BE629FB0719005C35CF /* SweatheriftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweatheriftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6EBCB73A29FF7EE2000F8F19 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		6EBCB73C29FF8039000F8F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6ED7621B2A11372500830DCE /* APIKeyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyInputView.swift; sourceTree = "<group>"; };
+		6ED7621D2A11375100830DCE /* APIKeyInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyInputViewModel.swift; sourceTree = "<group>"; };
 		6EDBB29C29FDD5CB0044F34D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		6EDBB29E29FE09350044F34D /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		6EDBB2A029FE0D800044F34D /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 		6EDBB2AA29FE2B2D0044F34D /* InjectedPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedPropertyWrapper.swift; sourceTree = "<group>"; };
 		6EE869562A0162CF0005A106 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
 		6EE869582A0163370005A106 /* CachedAsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageLoader.swift; sourceTree = "<group>"; };
+		6EFEFF832A0B274100878230 /* KeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProtocol.swift; sourceTree = "<group>"; };
+		6EFEFF852A0B283000878230 /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +225,7 @@
 				6EDBB29E29FE09350044F34D /* WeatherView.swift */,
 				6EE869562A0162CF0005A106 /* CachedAsyncImageView.swift */,
 				6EE869582A0163370005A106 /* CachedAsyncImageLoader.swift */,
+				6ED7621B2A11372500830DCE /* APIKeyInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,6 +235,7 @@
 			children = (
 				6EA75C3C29FB572600602ED0 /* HomeViewModel.swift */,
 				6EDBB2A029FE0D800044F34D /* WeatherViewModel.swift */,
+				6ED7621D2A11375100830DCE /* APIKeyInputViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -271,6 +281,7 @@
 				6E96E65029FEF6B2002B3492 /* WeatherAPIProtocol.swift */,
 				6E96E65229FEF787002B3492 /* WeatherRepositoryProtocol.swift */,
 				6E96E65E29FF63F4002B3492 /* Resettable.swift */,
+				6EFEFF832A0B274100878230 /* KeyChainProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -282,6 +293,7 @@
 				6E9C69E129FEDB76006CEDAD /* AnalyticsService.swift */,
 				6E96E65429FF0359002B3492 /* WeatherRepository.swift */,
 				6E96E65629FF0633002B3492 /* WeatherAPIService.swift */,
+				6EFEFF852A0B283000878230 /* KeyChainService.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -495,10 +507,12 @@
 				6EBCB73B29FF7EE2000F8F19 /* AppError.swift in Sources */,
 				6EA75C5429FC356300602ED0 /* System.swift in Sources */,
 				6E9C69E029FEDAEC006CEDAD /* AnalyticsProtocol.swift in Sources */,
+				6EFEFF862A0B283000878230 /* KeyChainService.swift in Sources */,
 				6EA75C4029FB589B00602ED0 /* RESTProtocol.swift in Sources */,
 				6EA75C3D29FB572600602ED0 /* HomeViewModel.swift in Sources */,
 				6E9C69D129FED63B006CEDAD /* TemperatureConverter.swift in Sources */,
 				6EA75C3B29FB532700602ED0 /* HomeView.swift in Sources */,
+				6ED7621C2A11372500830DCE /* APIKeyInputView.swift in Sources */,
 				6E96E65729FF0633002B3492 /* WeatherAPIService.swift in Sources */,
 				6EA75C4E29FC333200602ED0 /* MainWeather.swift in Sources */,
 				6EDBB2A529FE289F0044F34D /* InjectionKey.swift in Sources */,
@@ -512,6 +526,7 @@
 				6EA75C4829FC2FE700602ED0 /* Constants.swift in Sources */,
 				6E96E65129FEF6B2002B3492 /* WeatherAPIProtocol.swift in Sources */,
 				6EA75C4C29FC32F200602ED0 /* CoOrdinates.swift in Sources */,
+				6EFEFF842A0B274100878230 /* KeyChainProtocol.swift in Sources */,
 				6E96E65F29FF63F4002B3492 /* Resettable.swift in Sources */,
 				6EDBB2A129FE0D800044F34D /* WeatherViewModel.swift in Sources */,
 				6E9C69CC29FECC7B006CEDAD /* LocationManager.swift in Sources */,
@@ -521,6 +536,7 @@
 				6EDBB2A929FE29170044F34D /* InjectedValues.swift in Sources */,
 				6EA75C4629FC2B5400602ED0 /* APIError.swift in Sources */,
 				6EA75C5229FC351A00602ED0 /* Wind.swift in Sources */,
+				6ED7621E2A11375100830DCE /* APIKeyInputViewModel.swift in Sources */,
 				6EE869572A0162CF0005A106 /* CachedAsyncImageView.swift in Sources */,
 				6EDBB2AB29FE2B2D0044F34D /* InjectedPropertyWrapper.swift in Sources */,
 				6EE869592A0163370005A106 /* CachedAsyncImageLoader.swift in Sources */,
@@ -684,9 +700,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sweatherift/Preview Content\"";
+				DEVELOPMENT_TEAM = GWGK4HR33M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sweatherift/Info.plist;
@@ -702,8 +720,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.Sweatherift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PrateekMahendrakar.Sweatherift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -715,9 +734,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sweatherift/Preview Content\"";
+				DEVELOPMENT_TEAM = GWGK4HR33M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sweatherift/Info.plist;
@@ -733,8 +754,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.Sweatherift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PrateekMahendrakar.Sweatherift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

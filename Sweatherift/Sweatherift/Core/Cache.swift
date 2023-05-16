@@ -15,8 +15,7 @@ final class Cache<Key: Hashable, Value> {
 
    init(dateProvider: @escaping () -> Date = Date.init,
         entryLifetime: TimeInterval = 12 * 60 * 60,
-        maximumEntryCount: Int = 100)
-   {
+        maximumEntryCount: Int = 100) {
       self.dateProvider = dateProvider
       self.entryLifetime = entryLifetime
       wrapped.countLimit = maximumEntryCount
@@ -79,30 +78,12 @@ private extension Cache {
    }
 }
 
-// extension Cache {
-//   subscript(key: Key) -> Value? {
-//      get { return value(forKey: key) }
-//      set {
-//         guard let value = newValue else {
-//            // If nil was assigned using our subscript,
-//            // then we remove any value for that key:
-//            removeValue(forKey: key)
-//            return
-//         }
-//
-//         //insert(value, forKey: key)
-//         insert(value, forKey: key, expirationDate: T##Date)
-//      }
-//   }
-// }
-
 private extension Cache {
    final class KeyTracker: NSObject, NSCacheDelegate {
       var keys = Set<Key>()
 
       func cache(_: NSCache<AnyObject, AnyObject>,
-                 willEvictObject object: Any)
-      {
+                 willEvictObject object: Any) {
          guard let entry = object as? Entry else {
             return
          }
@@ -162,5 +143,26 @@ extension Cache where Key: Codable, Value: Codable {
       let fileURL = folderURLs[0].appendingPathComponent(name + ".cache")
       let data = try JSONEncoder().encode(self)
       try data.write(to: fileURL)
+   }
+
+   func retreiveFromDisk(
+      withName name: String,
+      using fileManager: FileManager = .default
+   ) -> Cache? {
+      let folderURLs = fileManager.urls(
+         for: .cachesDirectory,
+         in: .userDomainMask
+      )
+
+      let fileURL = folderURLs[0].appendingPathComponent(name + ".cache")
+      guard let data = try? Data(contentsOf: fileURL) else {
+         return nil
+      }
+      do {
+         let decodedData = try JSONDecoder().decode(Cache.self, from: data)
+         return decodedData
+      } catch {
+         return nil
+      }
    }
 }
