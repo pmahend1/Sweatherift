@@ -26,7 +26,10 @@ struct WeatherView: View {
                .ignoresSafeArea(.all)
          } else {
             VStack(alignment: .center, spacing: .zero) {
-               if let weatherReport = viewModel.weatherReport, weatherReport.weather.count > 0 {
+               if viewModel.showError {
+                  Text("Something went wrong! Please try again later.")
+               }
+               else if let weatherReport = viewModel.weatherReport, weatherReport.weather.count > 0 {
                   Text(weatherReport.name)
                      .font(.title)
                   Text(weatherReport.system.country)

@@ -63,7 +63,6 @@ struct HomeView: View {
          if viewModel.searchText.isEmpty {
             LocationButton(.shareMyCurrentLocation) {
                locationManager.requestLocation()
-               viewModel.isLocationShared = true
             }
             .frame(height: 40)
             .foregroundColor(.primary)
@@ -90,7 +89,9 @@ struct HomeView: View {
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
          }
       }
-
+      .onChange(of: locationManager.location) { nv in
+         viewModel.isLocationShared = nv != nil
+      }
       .onChange(of: viewModel.searchText) { newValue in
          Task {
             await viewModel.getLocations(searchText: newValue)

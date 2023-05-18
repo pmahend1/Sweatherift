@@ -44,6 +44,9 @@ struct APIKeyInputView: View {
       }
 
       VStack(alignment: .center, spacing: .zero) {
+         Text("Register at https://openweathermap.org/")
+         Text("Go to https://home.openweathermap.org/api_keys to get a key")
+            .padding(.top, 10)
          VStack(alignment: .leading, spacing: 4) {
             Text("Key")
                .font(.caption)
