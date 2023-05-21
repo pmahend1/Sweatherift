@@ -11,9 +11,15 @@ struct APIKeyInputView: View {
    @StateObject var viewModel = APIKeyInputViewModel()
 
    var body: some View {
+      
+      Text(.init(Localized.registerAtHttpsOpenweathermapOrg))
+      Text(.init(Localized.goToHttpsHomeOpenweathermapOrgApiKeysToGetAKey))
+         .padding(.top, 10)
+      
       if let apiKey = viewModel.keyChainService.keyValues[Constants.weatherAPIKey] as? String {
          Text(Localized.currentAPIKey)
             .font(.caption2)
+            .padding(.top, 20)
          Text(apiKey)
             .redacted(reason: !viewModel.showAPIKey ? .placeholder : [])
             .font(.body)
@@ -29,9 +35,7 @@ struct APIKeyInputView: View {
       }
 
       VStack(alignment: .center, spacing: .zero) {
-         Text(Localized.registerAtHttpsOpenweathermapOrg)
-         Text(Localized.goToHttpsHomeOpenweathermapOrgApiKeysToGetAKey)
-            .padding(.top, 10)
+
 
          VStack(alignment: .leading, spacing: 4) {
             Text(Localized.key)

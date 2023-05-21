@@ -17,7 +17,7 @@
 "enterKey" = "Enter Key";
 "feelsLike:%@" = "Feels Like: %@";
 "genericErrorMessage" = "Something went wrong! Please try again later.";
-"goToOpenweathermapOrgApiKeysToGetAKey" = "Go to https://home.openweathermap.org/api_keys to get a key";
+"goToOpenweathermapOrgApiKeysToGetAKey" = "Go to [https://home.openweathermap.org/api_keys](https://home.openweathermap.org/api_keys) to get a key";
 "humidity:%@" = "Humidity: %@";
 "key" = "Key";
 "locationSharedMessage" = "You have shared your location.";
@@ -26,7 +26,7 @@
 "myLocation" = "My Location";
 "noWeatherReportFound" = "No weather report found. Please try again later!";
 "pressure:%lld" = "Pressure: %lldmbar";
-"registerAtOpenweathermapOrg" = "Register at https://openweathermap.org/";
+"registerAtOpenweathermapOrg" = "Register at [https://openweathermap.org](https://openweathermap.org)";
 "save" = "Save";
 "saveAPIKey" = "Save API Key";
 "searchDescription" = "Enter at least 3 characters to begin search or share your location.";
