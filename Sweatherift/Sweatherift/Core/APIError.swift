@@ -10,3 +10,4 @@ import Foundation
 struct APIError: Error {
     var message: String
 }
+

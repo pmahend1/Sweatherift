@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E91F1EA2A199B1000371769 /* RedactionReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91F1E92A199B1000371769 /* RedactionReason.swift */; };
 		6E96E64629FEE00F002B3492 /* AnaltyicsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E64529FEE00F002B3492 /* AnaltyicsServiceMock.swift */; };
 		6E96E64829FEE27B002B3492 /* WeatherMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E64729FEE27B002B3492 /* WeatherMockFactory.swift */; };
 		6E96E64929FEE588002B3492 /* WeatherByLatLon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E9C69D929FED859006CEDAD /* WeatherByLatLon.json */; };
@@ -84,6 +85,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E91F1E92A199B1000371769 /* RedactionReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionReason.swift; sourceTree = "<group>"; };
 		6E96E64429FEDE04002B3492 /* Sweatherift.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sweatherift.xctestplan; sourceTree = "<group>"; };
 		6E96E64529FEE00F002B3492 /* AnaltyicsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnaltyicsServiceMock.swift; sourceTree = "<group>"; };
 		6E96E64729FEE27B002B3492 /* WeatherMockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMockFactory.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				6EDBB2AA29FE2B2D0044F34D /* InjectedPropertyWrapper.swift */,
 				6E96E65829FF07AC002B3492 /* Repository.swift */,
 				6E96E65C29FF07E6002B3492 /* Cache.swift */,
+				6E91F1E92A199B1000371769 /* RedactionReason.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				6EA75C4829FC2FE700602ED0 /* Constants.swift in Sources */,
 				6E96E65129FEF6B2002B3492 /* WeatherAPIProtocol.swift in Sources */,
 				6EA75C4C29FC32F200602ED0 /* CoOrdinates.swift in Sources */,
+				6E91F1EA2A199B1000371769 /* RedactionReason.swift in Sources */,
 				6EFEFF842A0B274100878230 /* KeyChainProtocol.swift in Sources */,
 				6E96E65F29FF63F4002B3492 /* Resettable.swift in Sources */,
 				6EDBB2A129FE0D800044F34D /* WeatherViewModel.swift in Sources */,
@@ -735,10 +739,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sweatherift/Preview Content\"";
-				DEVELOPMENT_TEAM = GWGK4HR33M;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GWGK4HR33M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sweatherift/Info.plist;
@@ -757,6 +763,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.PrateekMahendrakar.Sweatherift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = AppStore;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

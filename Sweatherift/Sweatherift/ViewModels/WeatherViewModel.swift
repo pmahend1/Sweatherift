@@ -14,6 +14,7 @@ final class WeatherViewModel: ObservableObject {
 
    @Published var weatherReport: WeatherReport? = nil
    @Published var isBusy = false
+   @Published var showError = false
 
    @Injected(\.weatherRepository) var weatherRepository
    @Injected(\.analytics) var analytics
@@ -77,6 +78,7 @@ final class WeatherViewModel: ObservableObject {
             }
          case let .failure(error):
             analytics.logError(error: error)
+            showError = true
       }
    }
 }

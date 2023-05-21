@@ -14,6 +14,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
    let manager = CLLocationManager()
 
    @Published var location: CLLocationCoordinate2D?
+   @Published var hasError = false
 
    var hasLocation: Bool {
       return location != nil
@@ -38,5 +39,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
    func locationManager(_: CLLocationManager, didFailWithError error: Error) {
       print(error)
+      hasError = true
+   }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+   public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+      lhs.latitude == rhs.latitude && rhs.longitude == rhs.longitude
    }
 }

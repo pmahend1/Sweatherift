@@ -10,3 +10,7 @@ import Foundation
 struct AppError: Error {
    let message: String
 }
+
+enum ErrorType: Error {
+   
+}

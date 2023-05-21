@@ -8,16 +8,29 @@
 
 //MARK: - Weather
 
-"searchDescription" = "Enter at least 3 characters to begin search or share your location.";
-"locationSharedMessage" = "You have shared your location.";
-"temperature:%@" = "Temperature: %@";
-"feelsLike:%@" = "Feels Like: %@";
-"min:%@" = "Min: %@";
-"max:%@" = "Max: %@";
-"pressure:%lld" = "Pressure: %lldmbar";
-"wind" = "Wind";
-"speed:%@" = "Speed: %@km/h";//TODO: - convert to locale mph or kmh
-"degree:%lld" = "Degree: %lld°";
-"humidity:%@" = "Humidity: %@";
+"apiKeyNotPresent" = "You don't have API key stored. Please securely store for API calls.";
+"change" = "Change";
+"changeAPIKey" = "Change API Key";
 "clouds:%@" = "Clouds: %@";
+"currentAPIKey" = "Current API Key";
+"degree:%lld" = "Degree: %lld°";
+"enterKey" = "Enter Key";
+"feelsLike:%@" = "Feels Like: %@";
+"genericErrorMessage" = "Something went wrong! Please try again later.";
+"goToOpenweathermapOrgApiKeysToGetAKey" = "Go to [https://home.openweathermap.org/api_keys](https://home.openweathermap.org/api_keys) to get a key";
+"humidity:%@" = "Humidity: %@";
+"key" = "Key";
+"locationSharedMessage" = "You have shared your location.";
+"max:%@" = "Max: %@";
+"min:%@" = "Min: %@";
+"myLocation" = "My Location";
 "noWeatherReportFound" = "No weather report found. Please try again later!";
+"pressure:%lld" = "Pressure: %lldmbar";
+"registerAtOpenweathermapOrg" = "Register at [https://openweathermap.org](https://openweathermap.org)";
+"save" = "Save";
+"saveAPIKey" = "Save API Key";
+"searchDescription" = "Enter at least 3 characters to begin search or share your location.";
+"show" = "Show";
+"speed:%@" = "Speed: %@km/h";//TODO: - convert to locale mph or kmh
+"temperature:%@" = "Temperature: %@";
+"wind" = "Wind";

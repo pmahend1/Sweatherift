@@ -7,33 +7,24 @@
 
 import SwiftUI
 
-public enum RedactionReason {
-   case placeholder
-   case confidential
-   case blurred
-}
-
 struct APIKeyInputView: View {
    @StateObject var viewModel = APIKeyInputViewModel()
 
-   var isKeyPresent: Bool {
-      if let apiKey = viewModel.keyChainService.keyValues[Constants.weatherAPIKey] as? String {
-         if !apiKey.isEmpty {
-            return true
-         }
-      }
-      return false
-   }
-
    var body: some View {
+      
+      Text(.init(Localized.registerAtHttpsOpenweathermapOrg))
+      Text(.init(Localized.goToHttpsHomeOpenweathermapOrgApiKeysToGetAKey))
+         .padding(.top, 10)
+      
       if let apiKey = viewModel.keyChainService.keyValues[Constants.weatherAPIKey] as? String {
-         Text("Current API Key")
+         Text(Localized.currentAPIKey)
             .font(.caption2)
+            .padding(.top, 20)
          Text(apiKey)
             .redacted(reason: !viewModel.showAPIKey ? .placeholder : [])
             .font(.body)
             .overlay {
-               Text("Show")
+               Text(Localized.show)
                   .opacity(viewModel.showAPIKey ? 0 : 1)
                   .font(.caption2)
             }
@@ -44,16 +35,18 @@ struct APIKeyInputView: View {
       }
 
       VStack(alignment: .center, spacing: .zero) {
+
+
          VStack(alignment: .leading, spacing: 4) {
-            Text("Key")
+            Text(Localized.key)
                .font(.caption)
                .padding(.leading, 2)
 
-            TextField("Enter Key", text: $viewModel.text)
+            TextField(Localized.enterKey, text: $viewModel.text)
                .textFieldStyle(.roundedBorder)
          }
 
-         Button(isKeyPresent ? "Change" : "Save") {
+         Button(viewModel.isKeyPresent ? Localized.change : Localized.save) {
             _ = viewModel.save()
          }
          .font(.body.bold())
