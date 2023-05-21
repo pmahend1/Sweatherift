@@ -44,7 +44,7 @@ struct APIKeyInputView: View {
          }
 
          Button(viewModel.isKeyPresent ? Localized.change : Localized.save) {
-            let result = viewModel.save()
+            _ = viewModel.save()
          }
          .font(.body.bold())
          .frame(width: 200, height: 40)
