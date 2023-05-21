@@ -8,6 +8,7 @@
 
 //MARK: - Weather
 
+"apiKeyHasBeenUpdated" = "API key has been updated!";
 "apiKeyNotPresent" = "You don't have API key stored. Please securely store for API calls.";
 "change" = "Change";
 "changeAPIKey" = "Change API Key";

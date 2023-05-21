@@ -8,6 +8,7 @@
 import Foundation
 
 enum Localized {
+   static let apiKeyHasBeenUpdated = String(localized: "apiKeyHasBeenUpdated", comment: "API key has been updated!")
    static let apiKeyNotPresent = String(localized: "apiKeyNotPresent", comment: "You don't have API key stored. Please securely store for API calls.")
    static let change = String(localized: "change", comment: "Change")
    static let changeAPIKey = String(localized: "changeAPIKey", comment: "Change API Key")

@@ -12,6 +12,8 @@ class APIKeyInputViewModel: ObservableObject {
 
    @Published var text: String = ""
    @Published var showAPIKey = false
+   @Published var showKeyUpdatedMessage = false
+   
    @Injected(\.keyChainService) var keyChainService
 
    var isKeyPresent: Bool {
@@ -27,8 +29,10 @@ class APIKeyInputViewModel: ObservableObject {
 
    func save() -> Bool {
       guard !text.isEmpty else { return false }
+      
       keyChainService.save(text, key: Constants.weatherAPIKey)
       keyChainService.keyValues[Constants.weatherAPIKey] = text
+      showKeyUpdatedMessage  = true
       return true
    }
 }
