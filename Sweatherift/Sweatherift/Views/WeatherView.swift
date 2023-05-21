@@ -11,6 +11,8 @@ import SwiftUI
 struct WeatherView: View {
    @StateObject private var viewModel: WeatherViewModel
 
+   // MARK: - Body
+
    init(for location: Location) {
       _viewModel = StateObject(wrappedValue: .init(for: location))
    }
@@ -18,6 +20,8 @@ struct WeatherView: View {
    init(for coOrdinates: CLLocationCoordinate2D) {
       _viewModel = StateObject(wrappedValue: .init(for: coOrdinates))
    }
+
+   // MARK: - Body
 
    var body: some View {
       ZStack(alignment: .center) {
@@ -27,9 +31,8 @@ struct WeatherView: View {
          } else {
             VStack(alignment: .center, spacing: .zero) {
                if viewModel.showError {
-                  Text("Something went wrong! Please try again later.")
-               }
-               else if let weatherReport = viewModel.weatherReport, weatherReport.weather.count > 0 {
+                  Text(Localized.genericErrorMessage)
+               } else if let weatherReport = viewModel.weatherReport, weatherReport.weather.count > 0 {
                   Text(weatherReport.name)
                      .font(.title)
                   Text(weatherReport.system.country)
@@ -81,10 +84,10 @@ struct WeatherView: View {
 
 struct WeatherView_Previews: PreviewProvider {
    static var previews: some View {
-      WeatherView(for: Location(name: "Charlotte",
+      WeatherView(for: Location(name: "New York City",
                                 lat: 1.0,
                                 lon: 1.0,
                                 country: "US",
-                                state: "NC"))
+                                state: "NY"))
    }
 }

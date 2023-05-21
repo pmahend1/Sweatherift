@@ -75,10 +75,10 @@ struct HomeView: View {
             }
 
             if !viewModel.isKeyPresent {
-               Text("You don't have API key stored. Please securely store for API calls.")
+               Text(Localized.apiKeyNotPresent)
             }
-            let buttonText = viewModel.isKeyPresent ? "Change API Key" : "Save API Key"
-            Button(buttonText) {
+
+            Button(viewModel.isKeyPresent ? Localized.changeAPIKey : Localized.changeAPIKey) {
                viewModel.showAPIView = true
             }
             .font(.body.bold())
