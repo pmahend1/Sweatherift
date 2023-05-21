@@ -5,6 +5,7 @@
 //  Created by Prateek Mahendrakar on 4/27/23.
 //
 
+import Combine
 import CoreLocationUI
 import SwiftUI
 
@@ -13,6 +14,7 @@ struct HomeView: View {
 
    @StateObject private var viewModel = HomeViewModel()
    @StateObject var locationManager = LocationManager()
+   let APIKeyChangedPublisher = NotificationCenter.default.publisher(for: Notification.APIKeyChanged)
 
    var searchResults: [Location] {
       if viewModel.searchText.isEmpty || viewModel.searchText.count < 3 {
@@ -56,50 +58,53 @@ struct HomeView: View {
             .navigationDestination(isPresented: $viewModel.showAPIView) {
                APIKeyInputView()
             }
-            .navigationTitle("Sweatherift")
+
+            if viewModel.searchText.isEmpty {
+               LocationButton(.shareMyCurrentLocation) {
+                  locationManager.requestLocation()
+               }
+               .frame(height: 40)
+               .foregroundColor(.primary)
+               .clipShape(RoundedRectangle(cornerRadius: 10))
+               .padding(.top, 10)
+
+               if locationManager.location != nil {
+                  Text(Localized.locationSharedMessage)
+                     .font(.caption)
+               }
+
+               if !viewModel.isKeyPresent {
+                  Text(Localized.apiKeyNotPresent)
+               }
+
+               Button(viewModel.isKeyPresent ? Localized.changeAPIKey : Localized.changeAPIKey) {
+                  viewModel.showAPIView = true
+               }
+               .font(.body.bold())
+               .frame(width: 200, height: 40)
+               .background(Color.accentColor)
+               .foregroundColor(.primary)
+               .clipShape(RoundedRectangle(cornerRadius: 10))
+               .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+            }
          }
          .padding(.horizontal, 20)
-
-         if viewModel.searchText.isEmpty {
-            LocationButton(.shareMyCurrentLocation) {
-               locationManager.requestLocation()
-            }
-            .frame(height: 40)
-            .foregroundColor(.primary)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.top, 10)
-
-            if locationManager.location != nil {
-               Text(Localized.locationSharedMessage)
-                  .font(.caption)
-            }
-
-            if !viewModel.isKeyPresent {
-               Text(Localized.apiKeyNotPresent)
-            }
-
-            Button(viewModel.isKeyPresent ? Localized.changeAPIKey : Localized.changeAPIKey) {
-               viewModel.showAPIView = true
-            }
-            .font(.body.bold())
-            .frame(width: 200, height: 40)
-            .background(Color.accentColor)
-            .foregroundColor(.primary)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+         .onChange(of: locationManager.location) { nv in
+            viewModel.isLocationShared = nv != nil
          }
-      }
-      .onChange(of: locationManager.location) { nv in
-         viewModel.isLocationShared = nv != nil
-      }
-      .onChange(of: viewModel.searchText) { newValue in
-         Task {
-            await viewModel.getLocations(searchText: newValue)
+         .onChange(of: viewModel.searchText) { newValue in
+            Task {
+               await viewModel.getLocations(searchText: newValue)
+            }
          }
-      }
-      .onAppear {
-         viewModel.loadData()
-         viewModel.isLocationShared = locationManager.hasLocation
+         .onAppear {
+            viewModel.loadData()
+            viewModel.isLocationShared = locationManager.hasLocation
+         }
+         .onReceive(APIKeyChangedPublisher) { _ in
+            viewModel.loadData()
+         }
+         .navigationTitle("Sweatherift")
       }
    }
 }

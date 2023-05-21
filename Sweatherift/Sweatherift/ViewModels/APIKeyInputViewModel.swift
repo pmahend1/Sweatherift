@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class APIKeyInputViewModel: ObservableObject {
    // MARK: - Properties
@@ -14,6 +15,7 @@ class APIKeyInputViewModel: ObservableObject {
    @Published var showAPIKey = false
    @Published var showKeyUpdatedMessage = false
    
+     
    @Injected(\.keyChainService) var keyChainService
 
    var isKeyPresent: Bool {
@@ -33,6 +35,7 @@ class APIKeyInputViewModel: ObservableObject {
       keyChainService.save(text, key: Constants.weatherAPIKey)
       keyChainService.keyValues[Constants.weatherAPIKey] = text
       showKeyUpdatedMessage  = true
+      NotificationCenter.default.post(name: Notification.APIKeyChanged, object: nil)
       return true
    }
 }

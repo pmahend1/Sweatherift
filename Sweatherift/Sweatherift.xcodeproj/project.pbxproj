@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E91F1EA2A199B1000371769 /* RedactionReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91F1E92A199B1000371769 /* RedactionReason.swift */; };
+		6E91F1EC2A19CAEA00371769 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E91F1EB2A19CAEA00371769 /* Notification+Extension.swift */; };
 		6E96E64629FEE00F002B3492 /* AnaltyicsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E64529FEE00F002B3492 /* AnaltyicsServiceMock.swift */; };
 		6E96E64829FEE27B002B3492 /* WeatherMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E96E64729FEE27B002B3492 /* WeatherMockFactory.swift */; };
 		6E96E64929FEE588002B3492 /* WeatherByLatLon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E9C69D929FED859006CEDAD /* WeatherByLatLon.json */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		6E91F1E92A199B1000371769 /* RedactionReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactionReason.swift; sourceTree = "<group>"; };
+		6E91F1EB2A19CAEA00371769 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		6E96E64429FEDE04002B3492 /* Sweatherift.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sweatherift.xctestplan; sourceTree = "<group>"; };
 		6E96E64529FEE00F002B3492 /* AnaltyicsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnaltyicsServiceMock.swift; sourceTree = "<group>"; };
 		6E96E64729FEE27B002B3492 /* WeatherMockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMockFactory.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				6E96E65829FF07AC002B3492 /* Repository.swift */,
 				6E96E65C29FF07E6002B3492 /* Cache.swift */,
 				6E91F1E92A199B1000371769 /* RedactionReason.swift */,
+				6E91F1EB2A19CAEA00371769 /* Notification+Extension.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				6EDBB2A129FE0D800044F34D /* WeatherViewModel.swift in Sources */,
 				6E9C69CC29FECC7B006CEDAD /* LocationManager.swift in Sources */,
 				6EA75C4429FC2A9A00602ED0 /* RESTService.swift in Sources */,
+				6E91F1EC2A19CAEA00371769 /* Notification+Extension.swift in Sources */,
 				6EA75C5029FC344700602ED0 /* WeatherReport.swift in Sources */,
 				6EA75C5629FC359500602ED0 /* Clouds.swift in Sources */,
 				6EDBB2A929FE29170044F34D /* InjectedValues.swift in Sources */,
