@@ -16,7 +16,7 @@ final class HomeViewModel: ObservableObject {
    @Published var searchText = ""
    @Published var lastLocation: Location?
    @Published var isLastDisplayed = false
-   @Published var isLocationShared = false
+   @Published var showCurrentLocationWeather = false
    @Published var showAPIView = false
    @Published var isKeyPresent = false
 
