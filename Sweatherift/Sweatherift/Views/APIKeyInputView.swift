@@ -15,11 +15,12 @@ struct APIKeyInputView: View {
       Text(.init(Localized.goToHttpsHomeOpenweathermapOrgApiKeysToGetAKey))
          .padding(.top, 10)
 
-      if let apiKey = viewModel.keyChainService.keyValues[Constants.weatherAPIKey] as? String {
-         Text(Localized.currentAPIKey)
-            .font(.caption2)
-            .padding(.top, 20)
-         Text(apiKey)
+      Text(Localized.currentAPIKey)
+         .font(.caption2)
+         .padding(.top, 20)
+
+      if viewModel.isKeyPresent {
+         Text(viewModel.APIKey)
             .redacted(reason: !viewModel.showAPIKey ? .placeholder : [])
             .font(.body)
             .overlay {
@@ -60,6 +61,9 @@ struct APIKeyInputView: View {
          }
       }
       .padding(.all, 20)
+      .onAppear {
+         viewModel.loadData()
+      }
    }
 }
 
