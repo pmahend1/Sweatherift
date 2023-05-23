@@ -18,6 +18,7 @@
 "enterKey" = "Enter Key";
 "feelsLike:%@" = "Feels Like: %@";
 "genericErrorMessage" = "Something went wrong! Please try again later.";
+"getWeatherForMyLocation" = "Get Weather for my location";
 "goToOpenweathermapOrgApiKeysToGetAKey" = "Go to [https://home.openweathermap.org/api_keys](https://home.openweathermap.org/api_keys) to get a key";
 "humidity:%@" = "Humidity: %@";
 "key" = "Key";

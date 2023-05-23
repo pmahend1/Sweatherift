@@ -15,11 +15,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
    @Published var location: CLLocationCoordinate2D?
    @Published var hasError = false
-
-   var hasLocation: Bool {
-      return location != nil
-   }
-
+   @Published var hasSharedLocation = false
+   
    // MARK: - Init
 
    override init() {
@@ -35,6 +32,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       location = locations.first?.coordinate
+      if location != nil {
+         hasSharedLocation = true
+      }
    }
 
    func locationManager(_: CLLocationManager, didFailWithError error: Error) {

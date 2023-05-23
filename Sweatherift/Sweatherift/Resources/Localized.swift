@@ -15,6 +15,7 @@ enum Localized {
    static let currentAPIKey = String(localized: "currentAPIKey", comment: "Current API Key")
    static let enterKey = String(localized: "enterKey", comment: "Enter Key")
    static let genericErrorMessage = String(localized: "genericErrorMessage", comment: "Something went wrong! Please try again later.")
+   static let getWeatherForMyLocation = String(localized: "getWeatherForMyLocation", comment: "Get Weather for my location")
    static let goToHttpsHomeOpenweathermapOrgApiKeysToGetAKey = String(localized: "goToOpenweathermapOrgApiKeysToGetAKey", comment: "Go to [https://home.openweathermap.org/api_keys](https://home.openweathermap.org/api_keys) to get a key")
    static let key = String(localized: "key", comment: "Key")
    static let locationSharedMessage = String(localized: "locationSharedMessage", comment: "You have shared your location.")

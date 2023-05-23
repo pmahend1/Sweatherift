@@ -60,7 +60,7 @@ struct HomeView: View {
             }
 
             if viewModel.searchText.isEmpty {
-               if locationManager.location == nil {
+               if !locationManager.hasSharedLocation {
                   LocationButton(.shareMyCurrentLocation) {
                      locationManager.requestLocation()
                   }
@@ -69,7 +69,7 @@ struct HomeView: View {
                   .clipShape(RoundedRectangle(cornerRadius: 10))
                   .padding(.top, 10)
                } else {
-                  Button("Get Weather for my location") {
+                  Button(Localized.getWeatherForMyLocation) {
                      viewModel.showCurrentLocationWeather = true
                   }
                   .font(.body.bold())
@@ -109,7 +109,7 @@ struct HomeView: View {
          }
          .onAppear {
             viewModel.loadData()
-            viewModel.showCurrentLocationWeather = locationManager.hasLocation
+            viewModel.showCurrentLocationWeather = locationManager.hasSharedLocation
          }
          .onReceive(APIKeyChangedPublisher) { _ in
             viewModel.loadData()
