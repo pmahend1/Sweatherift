@@ -61,12 +61,26 @@ final class KeyChainService: KeyChainProtocol {
          kSecAttrAccount: account,
       ] as [CFString: Any] as CFDictionary
 
-      // Add data in query to keychain
-      let status = SecItemAdd(query, nil)
+      var status = SecItemCopyMatching(query, nil)
 
-      if status != errSecSuccess {
-         // Print out the error
-         print("Error: \(status)")
+      switch status {
+         case errSecSuccess:
+            var attributesToUpdate: [String: Any] = [:]
+            attributesToUpdate[String(kSecValueData)] = data
+
+            status = SecItemUpdate(query as CFDictionary,
+                                   attributesToUpdate as CFDictionary)
+            if status != errSecSuccess {
+               print("Error updating value in keychain: \(status)")
+            }
+
+         case errSecItemNotFound:
+            status = SecItemAdd(query as CFDictionary, nil)
+            if status != errSecSuccess {
+               print("Error adding to keychain: \(status)")
+            }
+         default:
+            print("Unknown error adding/updating into keychain: \(status)")
       }
    }
 

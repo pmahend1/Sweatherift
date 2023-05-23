@@ -50,7 +50,7 @@ struct HomeView: View {
                   WeatherView(for: location)
                }
             }
-            .navigationDestination(isPresented: $viewModel.isLocationShared) {
+            .navigationDestination(isPresented: $viewModel.showCurrentLocationWeather) {
                if let location = locationManager.location {
                   WeatherView(for: location)
                }
@@ -60,17 +60,30 @@ struct HomeView: View {
             }
 
             if viewModel.searchText.isEmpty {
-               LocationButton(.shareMyCurrentLocation) {
-                  locationManager.requestLocation()
+               if !locationManager.hasSharedLocation {
+                  LocationButton(.shareMyCurrentLocation) {
+                     locationManager.requestLocation()
+                  }
+                  .frame(height: 40)
+                  .foregroundColor(.primary)
+                  .clipShape(RoundedRectangle(cornerRadius: 10))
+                  .padding(.top, 10)
+               } else {
+                  Button(Localized.getWeatherForMyLocation) {
+                     viewModel.showCurrentLocationWeather = true
+                  }
+                  .font(.body.bold())
+                  .frame(width: 350, height: 40)
+                  .background(Color.accentColor)
+                  .foregroundColor(.primary)
+                  .clipShape(RoundedRectangle(cornerRadius: 10))
+                  .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                }
-               .frame(height: 40)
-               .foregroundColor(.primary)
-               .clipShape(RoundedRectangle(cornerRadius: 10))
-               .padding(.top, 10)
 
                if locationManager.location != nil {
                   Text(Localized.locationSharedMessage)
                      .font(.caption)
+                     .padding(.top, 5)
                }
 
                if !viewModel.isKeyPresent {
@@ -89,9 +102,6 @@ struct HomeView: View {
             }
          }
          .padding(.horizontal, 20)
-         .onChange(of: locationManager.location) { nv in
-            viewModel.isLocationShared = nv != nil
-         }
          .onChange(of: viewModel.searchText) { newValue in
             Task {
                await viewModel.getLocations(searchText: newValue)
@@ -99,7 +109,7 @@ struct HomeView: View {
          }
          .onAppear {
             viewModel.loadData()
-            viewModel.isLocationShared = locationManager.hasLocation
+            viewModel.showCurrentLocationWeather = locationManager.hasSharedLocation
          }
          .onReceive(APIKeyChangedPublisher) { _ in
             viewModel.loadData()
