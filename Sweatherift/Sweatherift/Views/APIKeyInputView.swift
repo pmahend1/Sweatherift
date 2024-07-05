@@ -49,8 +49,8 @@ struct APIKeyInputView: View {
          }
          .font(.body.bold())
          .frame(width: 200, height: 40)
-         .background(Color.accentColor)
-         .foregroundColor(.primary)
+         .background(Color.accent)
+         .foregroundColor(Color.buttonLabelColor)
          .clipShape(RoundedRectangle(cornerRadius: 10))
          .padding(.top, 10)
 
