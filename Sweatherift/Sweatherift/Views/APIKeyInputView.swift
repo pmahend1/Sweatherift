@@ -42,7 +42,8 @@ struct APIKeyInputView: View {
 
                 TextField(Localized.enterKey, text: $viewModel.text)
                     .textFieldStyle(.roundedBorder)
-                    .autocorrectionDisabled()
+                    .keyboardType(.alphabet)
+                    .autocorrectionDisabled(true)
 
                 Button(viewModel.isKeyPresent ? Localized.change : Localized.save) {
                     _ = viewModel.save()
