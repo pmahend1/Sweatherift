@@ -64,18 +64,18 @@ struct HomeView: View {
                   LocationButton(.shareMyCurrentLocation) {
                      locationManager.requestLocation()
                   }
-                  .frame(height: 40)
-                  .foregroundColor(.primary)
+                  .frame(height: 70)
+                  .foregroundColor(.label)
                   .clipShape(RoundedRectangle(cornerRadius: 10))
-                  .padding(.top, 10)
+                  .padding(.init(top: 10, leading: 5, bottom: 10, trailing: 5))
                } else {
                   Button(Localized.getWeatherForMyLocation) {
                      viewModel.showCurrentLocationWeather = true
                   }
                   .font(.body.bold())
-                  .frame(width: 350, height: 40)
-                  .background(Color.accentColor)
-                  .foregroundColor(.primary)
+                  .frame(width: 350, height: 70)
+                  .background(Color.accent)
+                  .foregroundColor(Color.buttonLabelColor)
                   .clipShape(RoundedRectangle(cornerRadius: 10))
                   .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                }
@@ -88,15 +88,17 @@ struct HomeView: View {
 
                if !viewModel.isKeyPresent {
                   Text(Localized.apiKeyNotPresent)
+                       .font(.footnote)
+                       .fontWeight(.light)
                }
 
                Button(viewModel.isKeyPresent ? Localized.changeAPIKey : Localized.changeAPIKey) {
                   viewModel.showAPIView = true
                }
                .font(.body.bold())
-               .frame(width: 200, height: 40)
-               .background(Color.accentColor)
-               .foregroundColor(.primary)
+               .frame(width: 180, height: 60)
+               .background(Color.accent)
+               .foregroundColor(Color.buttonLabelColor)
                .clipShape(RoundedRectangle(cornerRadius: 10))
                .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
             }
@@ -115,6 +117,7 @@ struct HomeView: View {
             viewModel.loadData()
          }
          .navigationTitle("Sweatherift")
+         .navigationBarTitleDisplayMode(.large)
       }
    }
 }
